@@ -4,9 +4,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const server = http.Server(app)
-// const Student = require('./student.model')
-// const Teacher = require('./teacher.model')
-// const Admin = require('./admin.model')
 const User = require('./models/user');
 const path = require('path');
 const methodOverride = require('method-override');
@@ -116,29 +113,6 @@ app.get('/logout', (req, res) => {
 })
 
 
-// app.get('/profile', (req, res) => {
-//   if(req.isAuthenticated()){
-//     return res.render('usersProfile/viewProfile.ejs');
-//   } 
-//   res.redirect('/');
-// })
-
-// app.get('/profile/edit', (req, res) => {
-//   if(req.isAuthenticated()){
-//     return res.render('usersProfile/editProfile.ejs');
-//   } 
-//   res.redirect('/');
-// })
-
-// app.patch('/profile/edit/:id', async (req, res) => {
-  
-//   if(req.isAuthenticated()){
-//     await User.findByIdAndUpdate(req.user , req.body, { runValidators: true , new:true } );
-//     req.flash('success', 'Thank you for updating your profile. Now you can create articles.');
-//     return res.redirect('/');
-//   } 
-//   res.redirect('/');
-// })
 // Articles
 
 app.get('/editorPanel', (req, res) => {
@@ -147,145 +121,6 @@ app.get('/editorPanel', (req, res) => {
   }
   res.redirect('/');
 })
-
-// // Login as admin
-
-// app.post('/', function(request, response){
-//   const user = new Admin({
-//     username: request.body.username,
-//     password: request.body.passport
-//   })
-//   request.login(user, function(err){
-//     if(err){
-//       console.log(err);
-//     } else {
-//       passport.authenticate("local")(request, response, function(){
-//         response.redirect("/addStudent");
-//       })
-//     }
-//   })
-// })
-
-
-// Create a new admin user
-// app.post('/register', function(request, response){
-//   Admin.register({username: request.body.username}, request.body.password, function(err, user){
-//     if(err){
-//       console.log(err);
-//       response.redirect('/');
-//     } else {
-//       passport.authenticate("local")(request, response, function(){
-//         // message: 'admin user created successfully'
-//         response.redirect("/addStudent");
-//       })
-//     }
-//   })
-// })
-
-// // Login as admin
-
-// app.post('/', function(request, response){
-//   const user = new Admin({
-//     username: request.body.username,
-//     password: request.body.passport
-//   })
-//   request.login(user, function(err){
-//     if(err){
-//       console.log(err);
-//     } else {
-//       passport.authenticate("local")(request, response, function(){
-//         response.redirect("/addStudent");
-//       })
-//     }
-//   })
-// })
-
-// app.get('/logout', function(request, response){
-//   request.logout();
-//   response.redirect('/');
-// })
-
-// app.get('/dashboard', function(request, response){
-//     response.sendFile(path.join(__dirname , '../client/public/files/dashboard.html'));
-// })
-
-// app.get('/student.csv', function(request, response){
-//   return response.sendFile(path.join(__dirname , '../client/public/uploads/student.csv'));
-// })
-
-
-// app.get('/teacher.csv',function(request, response){
-//   return response.sendFile(path.join(__dirname , '../client/public/uploads/teacher.csv'));
-// })
-
-
-// app.get('/addStudent', function(request, response){
-//   if(request.isAuthenticated()){
-//     response.sendFile(path.join(__dirname , '../client/public/files/addStudent.html'));
-//   } else{
-//     response.redirect("/");
-//   }
-// })
-
-// app.get('/addTeacher', function(request, response){
-//   if(request.isAuthenticated()){
-//     response.sendFile(path.join(__dirname , '../client/public/files/addTeacher.html'));
-//   } else {
-//     response.redirect("/");
-//   }
-// })
-
-// app.get('/students/all', function(request, response){
-//     Student.find({}, function (err, data) {
-//       if(err){
-//         return response.status(400).json({
-//           error: 'data is missing'
-//         })
-//       }
-//         // console.log(data);
-//       return response.status(200).json(JSON.stringify(data));
-//       })
-// })
-
-// app.get('/teachers/all', function(request, response){
-//   Teacher.find({}, function (err, data) {
-//     if(err){
-//       return response.status(400).json({
-//         error: 'data is missing'
-//       })
-//     }
-//       // console.log(data);
-//     return response.status(200).json(JSON.stringify(data));
-//     })
-// })
-
-
-// app.post('/student/new', function(request, response){
-//     const newUser = new Student(request.body)
-
-//     newUser.save(function (err, data) {
-//         if (err){
-//           console.log(err);
-//           return response.status(400).json({
-//             error: 'data is missing'
-//           })
-//         }
-//           response.redirect("/addStudent")
-//       })     
-// })
-
-// app.post('/teacher/new', function(request, response){
-//   var newUser = new Teacher(request.body)
-//   newUser.save(function (err, data) {
-//       if (err){
-//         return response.status(400).json({
-//           error: 'data is missing'
-//         })
-//       }
-//       return response.status(200);
-//       // response.redirect("/addTeacher")
-//     })     
-// })
 
 
 

@@ -15,9 +15,9 @@ ONLINE MEDICATION BASED PROJECT
 
         npm init
 
-        npm install --save body-parser express http mongodb mongoose
+        npm install --save body-parser express ejs http mongodb mongoose
 
-        npm install passport passport-local passport-local-mongoose express-session
+        npm install passport passport-local passport-local-mongoose express-session method-override connect-flash
 
         npm install -g nodemon
 
@@ -30,4 +30,4 @@ ONLINE MEDICATION BASED PROJECT
 
 ## **PROJECT DOCUMENTAION**
 
-Comming Soon...
+comming soon...
