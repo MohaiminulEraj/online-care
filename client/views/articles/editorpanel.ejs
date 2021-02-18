@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor Panel</title>
+    <link rel="shortcut icon" type="image/png" href="output-onlinepngtools.png" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" /> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/editorpanel.css">
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+</head>
+
+<body>
+<%- include('../partials/navbar.ejs') %>
+
+    <div class="container-fluid">
+        <a class="btn btn-outline-dark" href="/editEditorPanel">Check the 'Edit Editor Panel' page</a>
+        <h2 style="text-align: center;">Editor Panel</h2>
+        <form action="" method="POST" autocomplete="on">
+            <div class="row">
+                <div class="col-lg-6">
+                    <input id="title-input" type="text" name="title" placeholder="Edit title here … (Mandatory)" required>
+                </div>
+                <div class="col-lg-6">
+                    <input id="topic-input" type="text" name="topic" placeholder="Edit Topic here … (Mandatory)" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <textarea id="desofSym-input" name="description" placeholder="Edit description here … (Mandatory)" required></textarea>
+                </div>
+                <div class="col-lg-2">
+                    <input multiple="multiple" id="symFile-input" class="files" type="file" name="file1">
+                    <!-- <input id="symFile-input" class="files" type="file" name="myfile">
+                    <input id="symFile-input" class="files" type="file" name="myfile"> -->
+                </div>
+                <div class="col-lg-4">
+                    <textarea id="cause-input" name="causes" placeholder="Edit causes here ... (Mandatory)" required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <textarea id="stages-input" name="stages" placeholder="Edit stages here … (Mandatory)" required></textarea>
+                </div>
+                <div class="col-lg-2">
+                    <input id="stagesFile-input" class="files" type="file" name="file2" multiple="multiple">
+                    <!-- <input class="files" type="file" name="myfile">
+                    <input class="files" type="file" name="myfile"> -->
+                </div>
+                <div class="col-lg-4">
+                    <textarea id="consequences-input" name="consequences" placeholder="Edit consequences here … (Mandatory)"
+                        required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <textarea id="remedies-input" name="remedies" placeholder="Edit remedies and treatment here … (Mandatory) "
+                        required></textarea>
+                </div>
+                <div class="col-lg-2">
+                    <input id="remediesFile-input" class="files" type="file3" name="myfile" multiple="multiple">
+                    <!-- <input class="files" type="file" name="myfile">
+                    <input class="files" type="file" name="myfile"> -->
+                </div>
+                <div class="col-lg-4">
+                    <textarea id="QA-input" name="question" placeholder="Frequently asked question and answer ... (Mandatory)"
+                        required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <textarea id="prevention-input" name="prevention" placeholder="Edit prevention here … (Mandatory)" required></textarea>
+                </div>
+                <div class="col-lg-2">
+                    <textarea id="adverse-input" name="adverse" placeholder="Edit adverse here … (Mandatory)" required></textarea>
+                </div>
+                <div class="col-lg-4">
+                    <textarea id="sideEffect-input" name="sideEffect" placeholder="Edit medication side effect here … (Mandatory)"
+                        required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    <input id="diagnosis-input" type="text" name="diagnosis"
+                        placeholder="Edit diagnosis here (Separated by comma) … (Mandatory)" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    <input id="symptoms-input" type="text" name="symptoms"
+                        placeholder="Edit symptoms here (Separated by comma) … (Mandatory)" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-2">
+                    <input id="uID-input" type="text" value="<%= loggedInUser.username %> " disabled>
+                </div>
+                <div class="col-lg-1 col-md-2" style="padding-top:1%; padding-left: 0; padding-right: 0; left: 16px;">
+                    <label for="duId-input">Submit to: </label>
+                </div>
+                <div class="col-lg-6">
+                    <input type="text" id="duId-input" name="docId" placeholder="Doctor's ID or User name (Separated by comma) ..."
+                        required>
+                </div>
+            </div>
+            <div class="col-lg-3 reflink">
+                <textarea id="ref-input" name="refLink" placeholder="Add reference link"></textarea>
+            </div>
+            <button style="float: right;" type="button" class="btn btn-outline-info">Save as Draft</button>
+            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#extraLargeModal">Preview</button><br>
+
+            <input id="checkbox-group" type="checkbox" id="select" required />
+            <label for="checkbox-group">I agree to the
+                <a href="#" target="_blank">terms and condition</a>.
+            </label>
+            <button type="submit" style="width: 264px;float: right;margin: 1% 2px;" class="btn btn-outline-success">Save
+                and Submit for review</button>
+
+    </div>
+
+    <div id="extraLargeModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h3 id="title" class="modal-title">Title</h3>
+                        <div><h4 id="topic"></h4></div>
+                        <div style="display: inline-block;"><span><%= loggedInUser.username %> </span>, <span>Published On</span></div>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                            <fieldset class="chatbox" contenteditable="false">
+                                <div>
+                                    <strong>Symptoms</strong>
+                                    <div id="symptoms"></div>
+                                    <div id="desofSym"></div>
+                                    <div id="symFile"></div>
+                                </div>
+                                <div>
+                                    <strong>Diagnosis</strong>
+                                    <div id="diagnosis"></div>
+                                </div>
+                                <div>
+                                    <strong>Remedies & Treatment</strong>
+                                    <div id="remedies"></div>
+                                    <div id="remediesFile"></div>
+                                </div>
+                                <div>
+                                    <strong>Adverse Effect</strong>
+                                    <div id="adverse"></div>
+                                </div>
+                                <div>
+                                    <strong>Prevention</strong>
+                                    <div id="prevention"></div>
+                                </div>
+                                <div>
+                                    <strong>Causes</strong>
+                                    <div id="cause"></div>
+                                </div>
+                                <div>
+                                    <strong>Stages</strong>
+                                    <div id="stages"></div>
+                                    <div id="stagesFile"></div>
+                                </div>
+                                <div>
+                                    <strong>Medication and it's side effect</strong>
+                                    <div id="sideEffect" ></div>
+                                </div>
+                                <div>
+                                    <strong>Consequences</strong>
+                                    <div id="consequences"></div>
+                                </div>
+                                <div>
+                                    <strong>Frequently asked questions and answers</strong>
+                                    <div id="QA"></div>
+                                </div>
+                                <div>
+                                    <strong>Reference</strong>
+                                    <div id="ref"></div>
+                                </div>
+                                <div>
+                                    <strong>Contributions</strong>
+                                    <div id="uID"><%= loggedInUser.username %> </div>
+                                    <div>Editor</div>
+                                    <div id="duId"></div>
+                                </div>
+                            </fieldset>
+            </div>
+        </div>
+    </div>
+
+
+    </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="../js/editorpanel.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script> -->
+</body>
+
+</html>

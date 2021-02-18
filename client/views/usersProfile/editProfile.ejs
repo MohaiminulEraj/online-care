@@ -1,0 +1,144 @@
+<%- include('../partials/head.ejs') %>
+
+<%- include('../partials/navbar.ejs') %>
+
+<form style="margin-top: 40px;" class="container" action="/profile/edit/<%=loggedInUser._id%>?_method=PATCH" method="POST">
+    <div class="form-row mb-3">
+        <div class="col">
+            <h3 style="text-align: center;">Edit General Info:</h3>
+        </div>
+        </div>
+        <div class="form-row mb-3">
+            <div class="col">
+                <label for="UserName">Username: </label>
+              <input type="text" id="UserName" class="form-control" placeholder="Username" value="<%= loggedInUser.username %>" disabled>
+            </div>
+            <div class="col">
+                <label for="emailId">Email: </label>
+              <input type="text" id="emailId" class="form-control" placeholder="Email" name="email" value="<%= loggedInUser.email %>" required>
+            </div>
+          </div>
+        <div class="form-row mb-3">
+          <div class="col">
+            <label for="fName">First Name: </label>
+            <input id="fName" type="text" class="form-control" placeholder="firstname" name="firstname" value="<%= loggedInUser.firstname %>" required>
+          </div>
+          <div class="col">
+            <label for="lName">Last Name: </label>
+            <input id="lName" type="text" class="form-control" placeholder="lastname" name="lastname" value="<%= loggedInUser.lastname %>" required>
+          </div>
+          </div>
+          <button style="float: right;" type="submit" class="btn btn-outline-success">Update</button>
+    </form>
+    <form style="margin-top: 40px;" class="container" action="" method="POST">
+        <div class="form-row mb-3">
+            <div class="col">
+                <h3 style="text-align: center;">Change Password:</h3>
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <div class="col">
+            <input type="text" class="form-control" placeholder="Enter Old Password" name="OldPassword" required>
+            </div>
+            <div class="col">
+            <input type="text" class="form-control" placeholder="Enter New Password" name="newPassword" required>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Confirm New Password" name="password" required>
+            </div>
+        </div>
+        <button style="float: right;" type="submit" class="btn btn-outline-success">Save</button>
+    </form>
+
+    <form style="margin-top: 40px;" class="container" action="/profile/edit/<%=loggedInUser._id%>?_method=PATCH" method="POST">
+        <div class="form-row mb-3">
+            <div class="col">
+                <h3 style="text-align: center;">Personal Info:</h3>
+            </div>
+            </div>
+            <div class="form-row mb-3">
+              <div class="col">
+                <label for="dob">Date Of Birth:</label>
+                <input id="dob" type="date" class="form-control" placeholder="Date of Birth" name="dateofbirth" value="<%= JSON.stringify(loggedInUser.dateofbirth).substr(1,10) !== '1000-12-09' ? JSON.stringify(loggedInUser.dateofbirth).substr(1,10) : '' %>" required>
+              </div>
+              <div class="col">
+                <label for="sex">Gender:</label>
+                <input id="sex" type="text" class="form-control" placeholder="Gender" list="gender" name="gender" value="<%= loggedInUser.gender !== 'Gender' ? loggedInUser.gender : '' %>" required/>
+                <datalist id="gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </datalist>
+              </div>
+              </div>
+              <div class="form-row mb-3">
+                <div class="col">
+                    <label for="cityInfo">City:</label>
+                  <input id="cityInfo" type="text" class="form-control" name="city" placeholder="City" value="<%= loggedInUser.city !== 'City' ? loggedInUser.city : '' %>" required>
+                </div>
+                <div class="col">
+                    <label for="countryInfo">Country:</label>
+                    <input id="countryInfo" type="text" class="form-control" name="country" placeholder="Country" value="<%= loggedInUser.country !== 'Country' ? loggedInUser.country : '' %>" required>
+                </div>
+                <div class="col">
+                    <label for="zipId">Zip:</label>
+                    <input id="zipId" type="text" class="form-control" name="zip" placeholder="Zip" value="<%= loggedInUser.zip !== 'zip' ? loggedInUser.zip : '' %>" required>
+                </div>
+                <div class="col">
+                    <label for="phone_number">Phone Number:</label>
+                    <input id="phone_number" type="number" class="form-control" name="phone" placeholder="Phone Number" value="<%= loggedInUser.phone !== '0' ? loggedInUser.phone : '' %>" required>
+                </div>
+              </div>
+              <div class="form-row mb-3">
+                <div class="col">
+                    <label for="dadId">Parents ID Father:</label>
+                  <input id="dadId" type="text" class="form-control" name="fatherId" value="<%= loggedInUser.fatherId %>" placeholder="Parents Username Father (Optional)">
+                </div>
+                <div class="col">
+                    <label for="momId">Parents ID Mother:</label>
+                    <input id="momId" type="text" class="form-control" name="mohterId" value="<%= loggedInUser.mohterId %>" placeholder="Parents Username Mother (Optional)">
+                </div>
+              </div>
+              <div class="form-row mb-3">
+                <div class="col">
+                    <label for="spouseID">Spouse ID</label>
+                  <input id="spouseID" type="text" class="form-control" name="spouseId" value="<%= loggedInUser.spouseId %>" placeholder="Spouse Username (Optional)">
+                </div>
+                <div class="col">
+                    <label for="childID">Child ID:</label>
+                    <input id="childID" type="text" class="form-control" name="childId" value="<%= loggedInUser.childId %>" placeholder="Separated by comma (Optional)">
+                </div>
+              </div>
+              
+              <button style="float: right;" type="submit" class="btn btn-outline-success">Save</button>
+        </form>
+
+        <form style="margin-top: 40px;" class="container" action="" method="POST">
+            <div class="form-row mb-3">
+                <div class="col">
+                    <h3 style="text-align: center;">Professional Info (Applicable if you are a Doctor):</h3>
+                </div>
+                </div>
+                <div class="form-row mb-3">
+                  <div class="col">
+                    <label for="lcNo">License No:</label>
+                    <input id="lcNo" type="number" class="form-control" placeholder="License No" name="license_no" value="<%= loggedInUser.license_no !== 0 ? loggedInUser.license_no : '' %>" required>
+                  </div>
+                  <div class="col">
+                    <label for="uni">Graduating University:</label>
+                  <input id="uni" type="text" class="form-control" name="university" placeholder="Graduating University" value="<%= loggedInUser.university !== 'University' ? loggedInUser.university : '' %>" required>
+                </div>
+                  </div>
+                  <div class="form-row mb-3">
+                    <div class="col">
+                        <label for="refNo">Reference ID:</label>
+                        <input id="refNo" type="text" class="form-control" placeholder="Separated by comma" name="reference_no" value="<%= loggedInUser.reference_no !== '(Seperated By Comma)' ? loggedInUser.reference_no : '' %>" required>
+                      </div>
+                    <div class="col">
+                        <label for="fileUpload">Enter Files:</label>
+                        <input id="fileUpload" type="file" class="form-control" name="mohterId" multiple required>
+                    </div>
+                  </div>
+                  <button style="float: right;" type="submit" class="btn btn-outline-success">Update</button>
+            </form>
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up as Doctor</title>
+    <link rel="shortcut icon" type="image/png" href="output-onlinepngtools.png" />
+    <link rel="stylesheet" href="../css/register.css">
+
+</head>
+
+<body>
+    <a style="position: relative;" href="../index.html">Back To Home Page</a>
+    <form action="" method="POST" autocomplete="on">
+        <div class="input-group">
+            <label for="fName">First Name*</label>
+            <input type="text" id="fName" required>
+        </div>
+        <div class="input-group">
+            <label for="lName">Last Name*</label>
+            <input type="text" id="lName" required>
+        </div>
+        <div class="input-group">
+            <label for="email">Email*</label>
+            <input type="email" id="email" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password*</label>
+            <input type="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                onkeyup='check();' required>
+        </div>
+        <div class="input-group">
+            <label for="confirmPass">Confirm Passsword*</label>
+            <input type="password" id="confirmPass" onkeyup='check();' required>
+            <span id='message' style="position: absolute; left: 82%;"></span>
+        </div>
+        <div class="input-group">
+            <label for="dob">Date of Birth*</label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+        <div class="input-group">
+            <label for="sex">Gender*</label>
+            <input id="sex" type="text" list="gender" required />
+            <datalist id="gender">
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </datalist>
+        </div>
+        <div class="input-group">
+            <label for="fatherID">Parents ID Father</label>
+            <input type="number" id="fatherID" placeholder="(Optional)">
+        </div>
+        <div class="input-group">
+            <label for="motherID">Parents ID Mother</label>
+            <input type="number" id="motherID" placeholder="(Optional)">
+        </div>
+        <div class="input-group">
+            <label for="spouseID">Spouse ID</label>
+            <input type="number" id="spouseID" placeholder="Separated by comma (Optional)">
+        </div>
+        <div class="input-group">
+            <label for="childID">Child ID</label>
+            <input type="number" id="childID" placeholder="Separated by comma (Optional)">
+        </div>
+        <div class="input-group">
+            <label for="license">License no*</label>
+            <input type="number" id="license" required>
+        </div>
+        <div class="input-group">
+            <label for="UV">Grduating University*</label>
+            <input type="text" id="UV" required>
+        </div>
+        <div class="input-group">
+            <label for="refID">Referance ID*</label>
+            <input type="text" id="refID" placeholder="Existing user ID of Online Medication for referance (Introducer)"
+                required>
+        </div>
+        <div class="input-group">
+            <label for="city">City*</label>
+            <input type="text" id="city" required>
+        </div>
+        <div class="input-group">
+            <label for="country">Country*</label>
+            <input type="text" id="country" required>
+        </div>
+        <div class="input-group">
+            <label for="zip">Zip*</label>
+            <input type="text" id="zip" required>
+        </div>
+        <div class="input-group">
+            <label for="phone">Phone number*</label>
+            <input type="tel" id="phone" name="phone" required>
+            <!-- pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" -->
+            <button>Send Verification Code</button>
+        </div>
+        <div class="input-group">
+            <label for="verify">Verification code*</label>
+            <input type="text" id="verify" required>
+            <button>Verify</button>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="select" required />
+            <label for="select">I agree to the
+                <a href="#" target="_blank">terms and condition</a>.
+            </label>
+        </div>
+        <div class="input-group">
+            <button style="margin-bottom: 6px;" type="submit">Submit</button>
+        </div>
+    </form>
+    <script>
+        var check = function () {
+            if (document.getElementById('password').value ==
+                document.getElementById('confirmPass').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'Matching';
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Not Matching';
+            }
+        }
+    </script>
+</body>
+
+</html>

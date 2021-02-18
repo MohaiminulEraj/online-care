@@ -1,0 +1,69 @@
+/* html,
+body {
+    width: 100%;
+} */
+
+form input {
+  /* padding-left: 12px; */
+  border: 2px solid black;
+  width: 100%;
+  margin-top: 10px;
+  padding-left: 5px;
+}
+
+.files {
+  width: 100%;
+  height: 110px;
+  padding-left: 0;
+}
+
+form textarea {
+  height: 110px;
+  border: 2px solid black;
+  margin-top: 10px;
+  width: 100%;
+  padding-left: 5px;
+}
+
+/* #myfile {
+  height: 110px;
+  border: 2px solid black;
+  margin-top: 10px;
+  width: 100%;
+} */
+
+.reflink {
+  margin-top: -127px;
+  float: right;
+  padding: 0;
+}
+
+#checkbox-group {
+  width: 1%;
+}
+
+@media (max-width: 1248px) {
+  .reflink textarea {
+    margin-top: 11px;
+  }
+
+  #checkbox-group {
+    width: 3%;
+  }
+}
+
+@media (max-width: 991px) {
+  .reflink textarea {
+    margin-top: -10px;
+  }
+
+  .reflink {
+    margin-top: 24px;
+    float: right;
+    /* padding: 0; */
+  }
+
+  #checkbox-group {
+    width: 3%;
+  }
+}

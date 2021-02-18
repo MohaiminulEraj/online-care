@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login-as-a-Patient</title>
+    <link
+    rel="shortcut icon"
+    type="image/png"
+    href="output-onlinepngtools.png"
+  />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../css/util.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../css/login.css"
+    />
+  </head>
+  <body>
+    <div class="limiter">
+      <div class="container-login100">
+        <div class="wrap-login100">
+          <div class="login100-pic js-tilt" data-tilt>
+            <img  style="max-width: 317px;" src="../images/onlinePatientlogo.png" alt="IMG" />
+          </div>
+
+          <form
+            action=""
+            method="POST"
+            class="login100-form validate-form"
+          >
+            <span class="login100-form-title">
+              Login as a Patient
+            </span>
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="Valid email is required: ex@abc.xyz"
+            >
+              <input
+                class="input100"
+                type="email"
+                name="patient_email"
+                placeholder="Email"
+                required
+              />
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </span>
+            </div>
+
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="Password is required"
+            >
+              <input
+                class="input100"
+                type="password"
+                name="patient_pass"
+                placeholder="Password"
+                required
+              />
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+              </span>
+            </div>
+
+            <div class="container-login100-form-btn">
+              <button type="submit" class="login100-form-btn">
+                Login
+              </button>
+            </div>
+
+            <div class="text-center p-t-12">
+              <span class="txt1">
+                Forgot
+              </span>
+              <a class="txt2" href="#">
+                Username / Password?
+              </a>
+            </div>
+
+            <div class="text-center p-t-136">
+              <a class="txt2" href="regPatient.html">
+                Create your Account
+                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+              </a>
+              <br />
+              <a href="../index.html">
+                <i class="fa fa-long-arrow-left m-r-5" aria-hidden="true"></i>
+                Back to Home Page
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

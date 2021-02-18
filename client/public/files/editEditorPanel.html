@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor Panel</title>
+    <link rel="shortcut icon" type="image/png" href="output-onlinepngtools.png" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/editorpanel.css">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <a style="position: relative;" class="btn btn-outline-secondary" href="../index.html">Back To Home Page</a>
+        <div><span>First Writer Name ID</span></div>
+        <h2 style="text-align: center;">Editor Panel</h2>
+        <form action="" method="POST" autocomplete="on">
+            <div class="row">
+                <div class="col-lg-6">
+                    <span><label>Title</label></span>
+                </div>
+                <div class="col-lg-6">
+                    <span><label>Topic</label></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <textarea name="description" placeholder="Edit description here … (Mandatory)" required></textarea>
+                </div>
+                <div class="col-lg-2">
+                    <input id="files" type="file" id="myfile" name="myfile">
+                    <input id="files" type="file" id="myfile" name="myfile">
+                    <input id="files" type="file" id="myfile" name="myfile">
+                    <input id="files" type="file" id="myfile" name="myfile">
+                    <input id="files" type="file" id="myfile" name="myfile">
+                    <input id="files" type="file" id="myfile" name="myfile">
+                </div>
+                <div class="col-lg-4">
+                    <textarea name="causes" placeholder="Edit causes here ... (Mandatory)" required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <textarea name="stages" placeholder="Edit stages here … (Mandatory)" required></textarea>
+                </div>
+                <div class="col-lg-2">
+                    <input type="file" id="myfile" name="myfile">
+                </div>
+                <div class="col-lg-4">
+                    <textarea name="consequences" placeholder="Edit consequences here … (Mandatory)"
+                        required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <textarea name="remedies" placeholder="Edit remedies and treatment here … (Mandatory) "
+                        required></textarea>
+                </div>
+                <div class="col-lg-2">
+                    <input type="file" id="myfile" name="myfile">
+                </div>
+                <div class="col-lg-4">
+                    <textarea name="question" placeholder="Frequently asked question and answer ... (Mandatory)"
+                        required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <textarea name="prevention" placeholder="Edit prevention here … (Mandatory)" required></textarea>
+                </div>
+                <div class="col-lg-2">
+                    <textarea name="adverse" placeholder="Edit adverse here … (Mandatory)" required></textarea>
+                </div>
+                <div class="col-lg-4">
+                    <textarea name="sideEffect" placeholder="Edit medication side effect here … (Mandatory)"
+                        required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    <input type="text" name="diagnosis"
+                        placeholder="Edit diagnosis here (Separated by comma) … (Mandatory)" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    <input type="text" name="symptoms"
+                        placeholder="Edit symptoms here (Separated by comma) … (Mandatory)" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-2">
+                    <input type="text" name="uID" placeholder="User ID (Mandatory)" required>
+                </div>
+                <div class="col-lg-1" style="padding-top:1%; padding-left: 0; padding-right: 0; left: 16px;">
+                    <label for="duId">Submit to: </label>
+                </div>
+                <div class="col-lg-6">
+                    <input type="text" id="duId" placeholder="Doctor's ID or User name (Separated by comma) ..."
+                        required>
+                </div>
+            </div>
+            <div class="col-lg-3 reflink">
+                <textarea name="refLink" placeholder="Add reference link"></textarea>
+            </div>
+            <button style="float: right;" type="button" class="btn btn-outline-info">Save as Draft</button>
+            <button class="btn btn-outline-primary">Preview</button><br>
+            <input id="checkbox-group" type="checkbox" id="select" required />
+            <label for="checkbox-group">I agree to the
+                <a href="#" target="_blank">terms and condition</a>.
+            </label>
+            <button type="submit" style="width: 264px;float: right;margin: 1% 2px;"
+                class="btn btn-outline-success">Update and Submit for review</button>
+    </div>
+    </form>
+    </div>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script> -->
+</body>
+
+</html>

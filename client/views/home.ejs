@@ -1,0 +1,32 @@
+<%- include('partials/head.ejs') %>
+
+<%- include('partials/navbar.ejs') %>
+<div class="container">
+    <%- include('partials/flash.ejs') %>
+    <form action="" method="GET" autocomplete="on">
+      <div class="input-group col-12">
+        <input maxlength="2048" id="" class="form-control searchForm" type="text" placeholder="Search by Disease" aria-label="Search" name="disease"/>
+        <div class="input-group-append">
+          <button style="cursor: pointer;" class="input-group-text" id="basic-text1" type="submit">
+            <i class="fas fa-search text-grey" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <form action="" method="GET" autocomplete="on">
+      <div class="input-group col-12" style="margin-top: 20px;">
+        <input id="" class="form-control searchForm" type="text" placeholder="Search by Symptoms" aria-label="Search" name="symptoms"/>
+        <div class="input-group-append">
+          <button style="cursor: pointer;" class="input-group-text" id="basic-text2" type="submit">
+            <i class="fas fa-search text-grey" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+</div>
+    <!-- <div style="margin-top: 516px;margin-left: 16px;">
+      <p>0<span>0</span> Registered Doctors</p>
+      <p>0<span>0</span> Registered Patient</p>
+    </div>       -->
+    
+    <%- include('partials/footer.ejs') %>

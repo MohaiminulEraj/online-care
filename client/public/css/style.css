@@ -1,0 +1,29 @@
+.searchForm {
+  margin-left: 36px;
+  border: 2px solid black;
+}
+
+.input-group {
+  margin-top: 195px;
+}
+
+.input-group-text {
+  margin-right: 36px;
+  border: 2px solid;
+}
+
+#email {
+  text-transform: lowercase;     
+}
+
+.propic {
+  height: 174px;
+  width: 174px;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+.editProfileButton {
+  margin-top: 6px;
+
+}

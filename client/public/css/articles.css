@@ -1,0 +1,41 @@
+body {
+    width: 100%;
+}
+
+fieldset {
+    width: 100%;
+    border: 2px solid black;
+    margin-top: 12px;
+    padding-left: 6px;
+    padding-right: 6px;
+    height: 490px;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+}
+
+textarea {
+    padding-left: 6px;
+    border: 2px solid black;
+    width: 100%;
+}
+
+.update-button {
+    margin-bottom: -16px;
+    float: right;
+    transform: translate(0px, -24px);
+}
+
+.appointment-button {
+    float: right;
+    margin-bottom: 16px;
+    margin-top: 6px;
+    /* margin-right: 21.5%; */
+}
+
+@media (max-width:366px) {
+    .update-button {
+        float: left;
+        margin-bottom: 4px;
+        transform: translate(0px, 0px);
+    }
+}
