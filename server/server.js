@@ -13,6 +13,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 // const passportLocalMongoose = require('passport-local-mongoose');
 const profileRoutes = require('./routes/profile');
+const articleRoutes = require('./routes/article');
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
@@ -53,7 +54,7 @@ mongoose.connect(dbURL, { useNewUrlParser: true, useCreateIndex: true, useUnifie
 mongoose.set("useCreateIndex", true);
 mongoose.connection.on('error', (error) => {
         console.log(error);
-    });
+});
 
 
 // passport.use(Admin.createStrategy());
@@ -70,6 +71,7 @@ app.use('/js', express.static(path.join(__dirname , '../client/public/js')));
 app.set('views', path.join(__dirname, '../client/views'))
 app.set('view engine', 'ejs');
 
+app.use('/article', articleRoutes);
 app.use('/profile', profileRoutes);
 // app.use(app.router);
 // routes.initialize(app);
@@ -109,16 +111,6 @@ app.post('/login', passport.authenticate('local' , { failureFlash: true, failure
 
 app.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/');
-})
-
-
-// Articles
-
-app.get('/editorPanel', (req, res) => {
-  if(req.isAuthenticated()){
-    return res.render('articles/editorpanel.ejs');
-  }
   res.redirect('/');
 })
 

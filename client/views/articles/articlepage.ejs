@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Article Page</title>
+    <link rel="shortcut icon" type="image/png" href="../images/output-onlinepngtools.png" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/articles.css" />
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+</head>
+
+<body>
+    <%- include('../partials/navbar.ejs') %>
+
+    <div class="container-fluid">
+        <a style="position: relative;" class="btn btn-outline-dark" href="reviewpage.html">Review Page</a>
+        <div>
+            <h2>Title</h2>
+        </div>
+        <div><span>Topic</span></div>
+        <div><span>Publisher Name</span>, <span>Published On</span></div>
+
+        <form action="" method="POST" autocomplete="on" id="main" name="main">
+            <div class="row">
+                <div class="col-md-9 form-group">
+                    <a role="button" class="btn-outline-danger update-button" href="/article/edit/editorpanel">
+                        Update Article
+                    </a>
+                    <fieldset class="chatbox" contenteditable="false">
+                        paginations
+                        <div>
+                            <strong>Symptoms</strong>
+                            <div id="symptoms"></div>
+                            <div id="desofSym">descriptionOfSym</div>
+                            <div id="symFile">media file</div>
+                        </div>
+                        <div>
+                            <strong>Diagnosis</strong>
+                            <div id="diagnosis">separated by comma</div>
+                        </div>
+                        <div>
+                            <strong>Remedies & Treatment</strong>
+                            <div id="remedies">desDes</div>
+                            <div id="remediesFile">media file</div>
+                        </div>
+                        <div>
+                            <strong>Adverse Effect</strong>
+                            <div id="adverse">desDes</div>
+                        </div>
+                        <div>
+                            <strong>Prevention</strong>
+                            <div id="prevention">desprevention</div>
+                        </div>
+                        <div>
+                            <strong>Causes</strong>
+                            <div id="cause">desCause</div>
+                        </div>
+                        <div>
+                            <strong>Stages</strong>
+                            <div id="stages">desStages</div>
+                            <div id="stagesFile">media file</div>
+                        </div>
+                        <div>
+                            <strong>Medication and it's side effect</strong>
+                            <div id="sideEffect">desSideEffect</div>
+                        </div>
+                        <div>
+                            <strong>Consequences</strong>
+                            <div id="consequences">desDes</div>
+                        </div>
+                        <div>
+                            <strong>Frequently asked questions and answers</strong>
+                            <div id="QA">Q&A</div>
+                        </div>
+                        <div>
+                            <strong>Reference</strong>
+                            <div id="ref">separated by comma</div>
+                        </div>
+                        <div>
+                            <strong>Contributions</strong>
+                            <div id="uID">First writer</div>
+                            <div>Editor</div>
+                            <div id="duId">Review Peers</div>
+                        </div>
+                    </fieldset>
+                    <button type="button" class="btn btn-outline-warning appointment-button">
+                        Make an appointment
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <span style="top: -19px; position: absolute; margin-top: 1%;">Feedback</span>
+                    <fieldset style="height: 434px;" name="" id=""></fieldset>
+                    <textarea name="" id="" placeholder="Give feedback..."></textarea>
+                    <button type="button" class="btn btn-outline-info" style="float: right; margin-bottom: 16px;">
+                        Post
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div>
+            <span>000</span>Views <span>000</span>Likes <a href="#">Share</a>
+            <!-- <button type="button" class="btn btn-outline-info" style="float: right; margin-bottom: 16px;">Post</button> -->
+            <!-- <button type="button" class="btn btn-outline-warning appointment-button">Make an appointment</button> -->
+        </div>
+    </div>
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

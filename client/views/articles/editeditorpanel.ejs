@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor Panel</title>
+    <link rel="shortcut icon" type="image/png" href="../../images/output-onlinepngtools.png" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/editorpanel.css">
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+</head>
+
+<body>
+    <%- include('../partials/navbar.ejs') %>
+
+    <div class="container-fluid">
+        <div><span><%= loggedInUser.firstname %> <%= loggedInUser.lastname %></span></div>
+        <h2 style="text-align: center;">Editor Panel</h2>
+        <form action="" method="POST" autocomplete="on">
+            <div class="row">
+                <div class="col-lg-6">
+                    <span><label>Title</label></span>
+                </div>
+                <div class="col-lg-6">
+                    <span><label>Topic</label></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <textarea name="description" placeholder="Edit description here … (Mandatory)" required></textarea>
+                </div>
+                <div class="col-lg-2">
+                    <input id="files" type="file" class="files" id="file1" name="file1" multiple>
+                </div>
+                <div class="col-lg-4">
+                    <textarea name="causes" placeholder="Edit causes here ... (Mandatory)" required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <textarea name="stages" placeholder="Edit stages here … (Mandatory)" required></textarea>
+                </div>
+                <div class="col-lg-2">
+                    <input type="file" class="files" id="file2" name="file2">
+                </div>
+                <div class="col-lg-4">
+                    <textarea name="consequences" placeholder="Edit consequences here … (Mandatory)"
+                        required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <textarea name="remedies" placeholder="Edit remedies and treatment here … (Mandatory) "
+                        required></textarea>
+                </div>
+                <div class="col-lg-2">
+                    <input type="file" class="files" id="file3" name="file3">
+                </div>
+                <div class="col-lg-4">
+                    <textarea name="question" placeholder="Frequently asked question and answer ... (Mandatory)"
+                        required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <textarea name="prevention" placeholder="Edit prevention here … (Mandatory)" required></textarea>
+                </div>
+                <div class="col-lg-2">
+                    <textarea name="adverse" placeholder="Edit adverse here … (Mandatory)" required></textarea>
+                </div>
+                <div class="col-lg-4">
+                    <textarea name="sideEffect" placeholder="Edit medication side effect here … (Mandatory)"
+                        required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    <input type="text" name="diagnosis"
+                        placeholder="Edit diagnosis here (Separated by comma) … (Mandatory)" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    <input type="text" name="symptoms"
+                        placeholder="Edit symptoms here (Separated by comma) … (Mandatory)" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-2">
+                    <input type="text" name="uID" placeholder="User ID (Mandatory)" required>
+                </div>
+                <div class="col-lg-1" style="padding-top:1%; padding-left: 0; padding-right: 0; left: 16px;">
+                    <label for="duId">Submit to: </label>
+                </div>
+                <div class="col-lg-6">
+                    <input type="text" id="duId" placeholder="Doctor's ID or User name (Separated by comma) ..."
+                        required>
+                </div>
+            </div>
+            <div class="col-lg-3 reflink">
+                <textarea name="refLink" placeholder="Add reference link"></textarea>
+            </div>
+            <button style="float: right;" type="button" class="btn btn-outline-info">Save as Draft</button>
+            <button class="btn btn-outline-primary">Preview</button><br>
+            <input id="checkbox-group" type="checkbox" id="select" required />
+            <label for="checkbox-group">I agree to the
+                <a href="#" target="_blank">terms and condition</a>.
+            </label>
+            <button type="submit" style="width: 264px;float: right;margin: 1% 2px;"
+                class="btn btn-outline-success">Update and Submit for review</button>
+    </div>
+    </form>
+    </div>
+    <script src="../../js/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="../../js/editorpanel.js"></script>
+</body>
+
+</html>
