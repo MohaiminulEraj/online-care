@@ -30,4 +30,36 @@ ONLINE MEDICATION BASED PROJECT
 
 ## **PROJECT DOCUMENTAION**
 
-comming soon...
+* This is the Home Page of my site where user can search by disease or symptomps to view verified articles.
+
+<img src="client/screenshot/Design2-01.jpg" alt="">
+
+* Search Results will show up like the image below. to view this in details user needs to click on the title
+
+<img src="client/screenshot/Design2-02.jpg" alt="">
+
+* Editor Panel Where user can post a new Article
+
+<img src="client/screenshot/Design2-06.jpg" alt="">
+
+* This is the view of an Article where user can give their feedback or make an appoinment with doctor who wrote this article.
+
+<img src="client/screenshot/Design2-03.jpg" alt="">
+
+* Doctors Profile View
+
+<img src="client/screenshot/Design2-10.jpg" alt="">
+
+* Patients Profile View
+
+<img src="client/screenshot/Design2-11.jpg" alt="">
+
+
+* Signup page for Doctor
+
+<img src="client/screenshot/Design2-04.jpg" alt=""> 
+
+* Signup page for Patients
+
+<img src="client/screenshot/Design2-05.jpg" alt="">
+
