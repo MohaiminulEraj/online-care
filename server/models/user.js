@@ -25,7 +25,8 @@ const UserSchema = new Schema({
     email : {
         type: String,
         required: true,
-        lowercase: true
+        lowercase: true,
+        unique: true
     },
     dateofbirth: { 
         type: Date, 
@@ -40,7 +41,7 @@ const UserSchema = new Schema({
     fatherId: String,
     mohterId: String,
     spouseId: String,
-    childId: String,
+    childId: [String],
     city: {
         type: String,
         required: true,
@@ -72,7 +73,7 @@ const UserSchema = new Schema({
         default: 'University'
     },
     reference_no: {
-        type: String,
+        type: [String],
         required: true,
         default: '(Seperated By Comma)'
     },

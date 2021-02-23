@@ -71,22 +71,22 @@ const ArticleSchema = new Schema({
         required: true
     },
     diagnosis: {
-        type: String,
+        type: [String],
         required: true
     },
     symptoms: {
-        type: String,
+        type: [String],
         required: true
     },
     docId: {
-        type: String,
+        type: [String],
         required: true
     },
     refLink: {
         type: String,
         required: true
     },
-    accountCreated: {
+    articleCreated: {
         type: Date,
         default: Date.now()
     },
