@@ -27,8 +27,9 @@ router.get('/edit/editorpanel', (req, res) => {
 router.post('/:id/new', async (req, res) => {
   if(req.isAuthenticated()){
     try{
-      const user = await User.findById(req.params.id).populate('articles');
+      const user = await User.findById(req.params.id).populate('articles').populate('author');
       const article = new Article(req.body);
+      article.author = req.user._id;
       user.articles.push(article);
       await article.save();
       await user.save();

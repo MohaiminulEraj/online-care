@@ -9,6 +9,14 @@ router.get('/', (req, res) => {
     res.redirect('/');
 })
 
+router.get('/publications', async (req, res) => {
+  if(req.isAuthenticated()){
+    const user = await User.findById(req.user._id).populate('articles').populate('author');
+    return res.render('usersProfile/publications.ejs', { user });
+  } 
+  res.redirect('/');
+})
+
 router.get('/edit', (req, res) => {
     if(req.isAuthenticated()){
       return res.render('usersProfile/editProfile.ejs');

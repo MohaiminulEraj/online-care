@@ -6,5 +6,10 @@
 
 <%- include('../partials/profileNavbar.ejs') %>
 
+<% if(loggedInUser && loggedInUser.articles){ %> 
+    <%= JSON.stringify(user.articles)  %> 
+    <br>
+    <%= user.articles %> 
+    <% } %> 
 
 <%- include('../partials/footer.ejs') %>

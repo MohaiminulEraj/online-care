@@ -116,7 +116,7 @@ app.get('/logout', (req, res) => {
 
 
 app.get('*', function(req, res){
-  res.status(404).send('<h1> Page Not Found <h1>');
+  res.status(404).send('<h1 style="color:red;"> Page Not Found <h1>');
 });
 
 server.listen(process.env.PORT || 3000,
