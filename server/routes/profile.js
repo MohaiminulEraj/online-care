@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Article = require('../models/articles');
 const User = require('../models/user');
 
 router.get('/', (req, res) => {
@@ -9,6 +10,10 @@ router.get('/', (req, res) => {
     res.redirect('/');
 })
 
+// router.post('/upload', upload.single('profileImg'), (req, res) => {
+//   res.json({file: req.file})
+// })
+
 router.get('/publications', async (req, res) => {
   if(req.isAuthenticated()){
     const user = await User.findById(req.user._id).populate('articles').populate('author');
@@ -16,6 +21,8 @@ router.get('/publications', async (req, res) => {
   } 
   res.redirect('/');
 })
+
+
 
 router.get('/edit', (req, res) => {
     if(req.isAuthenticated()){

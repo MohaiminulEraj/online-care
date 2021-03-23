@@ -42,6 +42,7 @@ form textarea {
   width: 1%;
 }
 
+
 @media (max-width: 1248px) {
   .reflink textarea {
     margin-top: 11px;

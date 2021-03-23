@@ -40,6 +40,7 @@ function updateValue(key, value) {
   "sideEffect"
 )("consequences")("QA")("ref")("uID")("duId"); //Self calling function
 
+
 // function theimage() {
 //   var filename = document.getElementById("file-id").value;
 //   document.getElementById("file-path").value = filename;

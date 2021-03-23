@@ -18,7 +18,7 @@ const ArticleSchema = new Schema({
         type: String,
         required: true
     },
-    topic : {
+    topic : {  // will be replaced with department
         type: String,
         required: true
     },
@@ -86,6 +86,7 @@ const ArticleSchema = new Schema({
         type: String,
         required: true
     },
+    thumbnail: String,
     articleCreated: {
         type: Date,
         default: Date.now()

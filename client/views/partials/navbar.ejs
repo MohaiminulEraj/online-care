@@ -1,43 +1,52 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
       <!-- <a class="navbar-brand" href="index.html">Online Marketplace</a> -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" href="/"><i class="fas fa-home"></i></a>
-            </li>
-            <% if(loggedInUser && loggedInUser.gender !== 'Gender' && loggedInUser.country !== 'Country') {%> 
-            <li class="nav-item">
-                <a class="nav-link active" href="/article/editorpanel">CREATE NEW ARTICLE</a>
-            </li>
-            <% } else {%> 
-            <li class="nav-item">
-              <a class="nav-link active" href="" onclick="check()">CREATE NEW ARTICLE</a>
+          <li class="nav-item">
+            <a class="nav-link active" href="/"><i class="fas fa-home"></i></a>
           </li>
-          <% } %> 
+          <% if(loggedInUser && loggedInUser.gender !== 'Gender' && loggedInUser.country !== 'Country') {%>
+          <li class="nav-item">
+            <a class="nav-link active" href="/article/editorpanel">CREATE NEW ARTICLE</a>
+          </li>
+          <% } else {%>
+          <li class="nav-item">
+            <a class="nav-link active" href="" onclick="check()">CREATE NEW ARTICLE</a>
+          </li>
+          <% } %>
         </ul>
         <ul class="navbar-nav ml-auto">
-          <% if(loggedInUser) { %> 
+          <% if(loggedInUser) { %>
           <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">WELCOME <%= loggedInUser.firstname.toUpperCase() %>  <%= loggedInUser.lastname.toUpperCase()  %>  </a>
+            <a class="nav-link active dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">WELCOME <%= loggedInUser.firstname.toUpperCase() %>
+              <%= loggedInUser.lastname.toUpperCase()  %> </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
               <li><a class="dropdown-item" href="/profile">My Profile</a></li>
               <li><a class="dropdown-item" href="/profile/edit">Edit Profile</a></li>
-              <li><hr></li>
+              <li>
+                <hr>
+              </li>
               <li><a class="dropdown-item" href="/logout">LOGOUT</a></li>
             </ul>
           </li>
-          <% } else { %> 
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="modal" data-target="#registerModal" href="#">REGISTER</a>
-            </li>
-            <li class="nav-item">
+          <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="modal" data-target="#registerModal" href="#">REGISTER</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link active" data-toggle="modal" data-target="#loginModal" href="#">LOGIN</a>
           </li>
-          <% } %> 
+          <% } %>
         </ul>
       </div>
     </div>
@@ -49,35 +58,30 @@
       <div class="modal-content">
         <div class="modal-header">
           <h3><i class="fa fa-lock"></i> Login:</h3>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-hidden="true"
-          >
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
             &times;
           </button>
         </div>
 
         <!--Body-->
         <div class="container modal-body" id="loginclick">
-            <form action="/login" method="POST">
-                <div class="form-group">
-                    <input type="text" name="username" class="form-control username" placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password" class="form-control" placeholder="Password" required>
-                </div>
-                <!-- <div class="form-check mb-2 mr-sm-2">
+          <form action="/login" method="POST">
+            <div class="form-group">
+              <input type="text" name="username" class="form-control username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" class="form-control" placeholder="Password" required>
+            </div>
+            <!-- <div class="form-check mb-2 mr-sm-2">
                     <label style="cursor: pointer;" class="form-check-label">
                       <input class="form-check-input" onclick="showPassBtn()" type="checkbox"> Show password
                     </label>
                   </div> -->
-                <div class="form-group">
-                    <button style="float: right;" type="submit" id="loginBtn" class="btn btn-outline-success">Login</button>
-                </div>
+            <div class="form-group">
+              <button style="float: right;" type="submit" id="loginBtn" class="btn btn-outline-success">Login</button>
+            </div>
 
-            </form>
+          </form>
         </div>
       </div>
     </div>
@@ -90,48 +94,45 @@
       <div class="modal-content">
         <div class="modal-header">
           <h3><i class="fas fa-user"></i> Register:</h3>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-hidden="true"
-          >
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
             &times;
           </button>
         </div>
 
         <!--Body-->
         <div class="container modal-body" id="registerModal">
-            <form action="/register" method="POST">
-              <div class="row">
-                <div class="form-group col-6">
-                  <input type="text" name="firstname" class="form-control" id="firstname" placeholder="First Name" required>
-                </div>
-                <div class="form-group col-6">
-                  <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Last Name" required>
-                </div>
+          <form action="/register" method="POST">
+            <div class="row">
+              <div class="form-group col-6">
+                <input type="text" name="firstname" class="form-control" id="firstname" placeholder="First Name"
+                  required>
               </div>
-                <div class="form-group">
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="username" class="form-control username" placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                  <input type="password" name="password" class="form-control" placeholder="Password" required>
-                    <!-- <input type="password" name="password" class="form-control" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 to 16 characters" required> -->
-                </div>
-                <div class="form-group">
-                    <button style="float: right;" type="submit" id="registerBtn" class="btn btn-outline-success">Register</button>
-                </div>
-            </form>
+              <div class="form-group col-6">
+                <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Last Name" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <input type="text" name="username" class="form-control username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" class="form-control" placeholder="Password" required>
+              <!-- <input type="password" name="password" class="form-control" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 to 16 characters" required> -->
+            </div>
+            <div class="form-group">
+              <button style="float: right;" type="submit" id="registerBtn"
+                class="btn btn-outline-success">Register</button>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
   </div>
-  </div>  
 
   <script>
-    function check(){
+    function check() {
       alert('User needs to have a varified account to create an article')
     }
   </script>

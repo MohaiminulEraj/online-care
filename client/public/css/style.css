@@ -13,7 +13,7 @@
 }
 
 #email {
-  text-transform: lowercase;     
+  text-transform: lowercase;
 }
 
 .propic {
@@ -21,6 +21,39 @@
   width: 174px;
   border-radius: 50%;
   margin-top: 10px;
+}
+
+.propic-edit {
+  height: 174px;
+  width: 174px;
+  border-radius: 50%;
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+
+.profilePictureBtn {
+  position: absolute;
+  font-size: 55px;
+  color: rgba(0, 0, 0, 0.6);
+  bottom: 20%;
+  left: 47%;
+  background-color: transparent;
+  border: 0px;
+  display: none;
+}
+
+.imgContainer:hover .profilePictureBtn {
+  display: block;
+}
+
+#imagePreview {
+  width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 .editProfileButton {

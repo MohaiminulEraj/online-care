@@ -6,6 +6,10 @@ const app = express()
 const server = http.Server(app)
 const User = require('./models/user');
 const path = require('path');
+const crypto = require('crypto');
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream')
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -52,7 +56,8 @@ mongoose.Promise = global.Promise
 const dbURL = 'mongodb://localhost:27017/online_medication' //change this if you are using Atlas
 mongoose.connect(dbURL, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false }) 
 mongoose.set("useCreateIndex", true);
-mongoose.connection.on('error', (error) => {
+const conn = mongoose.connection;
+conn.on('error', (error) => {
         console.log(error);
 });
 
@@ -76,11 +81,46 @@ app.use('/profile', profileRoutes);
 // app.use(app.router);
 // routes.initialize(app);
 
+
+
+//  Init gfs 
+let gfs;
+conn.once('open', () => {
+  // Init stream 
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('uploads');
+})
+
+// Create Storage Engine 
+const storage = new GridFsStorage({
+  url: dbURL,
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
+        if (err) {
+          return reject(err);
+        }
+        const filename = buf.toString('hex') + path.extname(file.originalname);
+        const fileInfo = {
+          filename: filename,
+          bucketName: 'uploads'
+        };
+        resolve(fileInfo);
+      });
+    });
+  }
+});
+const upload = multer({ storage });
+
 app.get('/', function(request, response){
     // response.sendFile(path.join(__dirname , '../client/index.html'));
     response.render('home.ejs');
 })
 
+
+app.post('/upload', upload.single('profileImg'), (req, res) => {
+  res.json({file: req.file})
+})
 
 // Create a user
 

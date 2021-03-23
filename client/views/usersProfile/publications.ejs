@@ -6,10 +6,31 @@
 
 <%- include('../partials/profileNavbar.ejs') %>
 
-<% if(loggedInUser && loggedInUser.articles){ %> 
-    <%= JSON.stringify(user.articles)  %> 
-    <br>
-    <%= user.articles %> 
-    <% } %> 
+<% if(loggedInUser && loggedInUser.articles){ %>
+<!-- <%= loggedInUser.articles %> -->
+<br>
+<!-- <%= user.articles %> -->
+<div class="container-flued">
+<ul class="row list-unstyled">
+    
+    <% for (const [key, value] of Object.entries(user.articles)) { %>
+    
+    <li class="col-lg-3 col-md-4 col-sm-6 mb-5"> 
+        <div>Article <%= parseInt(key)+1 %>:</div>
+        <div>Title: <%= value.title %></div>
+    <div> Department: <%= value.topic %> </div>
+    <div> Description: <% if(value.description.length <= 100){%>
+        <%= value.description %> <% } else { %> <%=  value.description.substring(0, 150) %>...<a href="">see more</a>
+        <% } %> </div>
+    <div> Symptoms: <%= value.symptoms  %> </div>
+    <%  } %>
+    </li>
+</ul>
+</div>
+<% } %>
+
+<!-- <form action="/profile/publications" method="GET">
+    <button class="btn btn-success" type="submit">Generate Articles</button>
+</form> -->
 
 <%- include('../partials/footer.ejs') %>
