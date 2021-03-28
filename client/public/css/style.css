@@ -1,6 +1,14 @@
+body {
+  background-color: black;
+  color: aliceblue;
+}
+
+
 .searchForm {
+  background-color: black;
+  color: whitesmoke;
   margin-left: 36px;
-  border: 2px solid black;
+  border: 2px solid wheat;
 }
 
 .input-group {
@@ -40,7 +48,7 @@
   font-size: 55px;
   color: rgba(0, 0, 0, 0.6);
   bottom: 20%;
-  left: 47%;
+  left: 48%;
   background-color: transparent;
   border: 0px;
   display: none;

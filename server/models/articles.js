@@ -87,16 +87,12 @@ const ArticleSchema = new Schema({
         required: true
     },
     thumbnail: String,
-    articleCreated: {
-        type: Date,
-        default: Date.now()
-    },
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     }
 
-});
+}, { timestamps: true });
 
 
 const Article = mongoose.model('Article', ArticleSchema);

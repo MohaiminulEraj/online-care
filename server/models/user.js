@@ -26,6 +26,7 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         lowercase: true,
+        trim: true,
         unique: true
     },
     dateofbirth: { 
@@ -63,23 +64,25 @@ const UserSchema = new Schema({
         default: '0'
     },
     license_no: {
-        type: Number,
+        type: String,
         required: true,
-        default: 0
+        unique:true,
+        default: '0'
     },
     university: {
         type: String,
         required: true,
         default: 'University'
     },
+    dept_doc: {
+        type: String,
+        required: true,
+        default:'dept'
+    },
     reference_no: {
         type: [String],
         required: true,
         default: '(Seperated By Comma)'
-    },
-    accountCreated: {
-        type: Date,
-        default: Date.now()
     },
     articles: [
         {
@@ -88,7 +91,7 @@ const UserSchema = new Schema({
         }
     ]
 
-});
+}, { timestamps: true });
 
 UserSchema.plugin(passportLocalMongoose);
 

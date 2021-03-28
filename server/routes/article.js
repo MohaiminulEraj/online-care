@@ -45,7 +45,7 @@ router.get('/edit/editorpanel', (req, res) => {
 router.post('/:id/new', upload.single('thumbnail'), async (req, res, next) => {
   if(req.isAuthenticated()){
     try{
-      const user = await User.findById(req.params.id).populate('articles').populate('author');
+      const user = await User.findById(req.params.id).populate('articles').sort({ "createdAt": -1 }).populate('author');
       // const thumbnailImg = req.file;
       const article = new Article(req.body);
       article.author = req.user._id;

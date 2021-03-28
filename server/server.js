@@ -7,7 +7,8 @@ const server = http.Server(app)
 const User = require('./models/user');
 const path = require('path');
 const crypto = require('crypto');
-const multer = require('multer');
+const mongoose = require('./database');
+// const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream')
 const methodOverride = require('method-override');
@@ -19,8 +20,8 @@ const LocalStrategy = require('passport-local');
 const profileRoutes = require('./routes/profile');
 const articleRoutes = require('./routes/article');
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json({limit: '50mb'}))
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit:50000}))
 app.use(methodOverride('_method'));
 app.use(session({
   secret: "thisshouldbeabettersecret.",
@@ -50,16 +51,16 @@ app.use((req, res, next) => {
 
 
 // DB Connection
-const mongoose = require('mongoose');
-const { request } = require('express');
-mongoose.Promise = global.Promise
-const dbURL = 'mongodb://localhost:27017/online_medication' //change this if you are using Atlas
-mongoose.connect(dbURL, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false }) 
-mongoose.set("useCreateIndex", true);
-const conn = mongoose.connection;
-conn.on('error', (error) => {
-        console.log(error);
-});
+// const mongoose = require('mongoose');
+// const { request } = require('express');
+// mongoose.Promise = global.Promise
+// const dbURL = 'mongodb://localhost:27017/online_medication' //change this if you are using Atlas
+// mongoose.connect(dbURL, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false }) 
+// mongoose.set("useCreateIndex", true);
+// const conn = mongoose.connection;
+// conn.on('error', (error) => {
+//         console.log(error);
+// });
 
 
 // passport.use(Admin.createStrategy());
@@ -84,56 +85,67 @@ app.use('/profile', profileRoutes);
 
 
 //  Init gfs 
-let gfs;
-conn.once('open', () => {
-  // Init stream 
-  gfs = Grid(conn.db, mongoose.mongo);
-  gfs.collection('uploads');
-})
+// let gfs;
+// conn.once('open', () => {
+//   // Init stream 
+//   gfs = Grid(conn.db, mongoose.mongo);
+//   gfs.collection('uploads');
+// })
 
 // Create Storage Engine 
-const storage = new GridFsStorage({
-  url: dbURL,
-  file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        }
-        const filename = buf.toString('hex') + path.extname(file.originalname);
-        const fileInfo = {
-          filename: filename,
-          bucketName: 'uploads'
-        };
-        resolve(fileInfo);
-      });
-    });
-  }
-});
-const upload = multer({ storage });
+// const storage = new GridFsStorage({
+//   url: dbURL,
+//   file: (req, file) => {
+//     return new Promise((resolve, reject) => {
+//       crypto.randomBytes(16, (err, buf) => {
+//         if (err) {
+//           return reject(err);
+//         }
+//         const filename = buf.toString('hex') + path.extname(file.originalname);
+//         const fileInfo = {
+//           filename: filename,
+//           bucketName: 'uploads'
+//         };
+//         resolve(fileInfo);
+//       });
+//     });
+//   }
+// });
+// const upload = multer({ storage });
 
-app.get('/', function(request, response){
+app.get('/', function(req, res){
     // response.sendFile(path.join(__dirname , '../client/index.html'));
-    response.render('home.ejs');
+    res.render('home.ejs');
 })
 
 
-app.post('/upload', upload.single('profileImg'), (req, res) => {
-  res.json({file: req.file})
-})
+// app.post('/upload', upload.single('profileImg'), (req, res) => {
+//   res.json({file: req.file})
+// })
 
 // Create a user
 
 app.post('/register', async (req, res, next) => {
   try{
     const { firstname, lastname, email, username, password } = req.body;
+    const checkEmail = await User.findOne({
+      email: email
+    })
+    .catch((e) => {
+      req.flash('error', 'Somthing went wrong');
+      res.redirect('/');
+    })
+    if(checkEmail!== null && email == checkEmail.email){
+      req.flash('error', 'Email already in use.');
+      res.redirect('/');
+    }
     const user = new User({ firstname, lastname, email, username });
     const registerUser = await User.register(user, password);
     req.login(registerUser, err => {
       if(err){
         return next(err);
       }
-      req.flash('success', 'User created Successfully! To create an article you have to update your profile by going Edit Profile page');
+      req.flash('success', 'User created Successfully! To create articles you have to update your profile by going Edit Profile page');
       res.redirect('/');
     })
 

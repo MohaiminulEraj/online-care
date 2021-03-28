@@ -1,28 +1,42 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active"  href="/"><i class="fas fa-home"></i></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active"  href="/profile/publications">PUBLICATIONS</a>
-            </li>
-            <!-- <li class="nav-item">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" href="/profile/"><i class="fas fa-home"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/profile/publications">PUBLICATIONS</a>
+        </li>
+        <!-- <li class="nav-item">
                 <a class="nav-link active"  href="/article/editorpanel">CHECK UP</a>
             </li> -->
-            <li class="nav-item">
-                <a class="nav-link active"  href="/profile/">DIAGNOSTIC REPORTS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active"  href="/profile/">PRESCRIPTION</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active"  href="/profile/">HEALTH ADVISOR</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active"  href="/profile/">ABOUT</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active"  href="/profile/">TRANSACTION HISTORY</a>
-            </li>
-        </ul>
-  </nav>
+        <li class="nav-item">
+            <a class="nav-link active" href="/profile/">DIAGNOSTIC REPORTS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/profile/">PRESCRIPTION</a>
+        </li>
+        <% if(loggedInUser && loggedInUser.license_no !== '0' && loggedInUser.university !== 'University' && loggedInUser.reference_no[0] !== '(Seperated By Comma)') {%>
+        <li class="nav-item">
+            <a class="nav-link active" href="/profile/">CHECK UP</a>
+        </li>
+        <% }%>
+        <li class="nav-item">
+            <a class="nav-link active" href="/profile/">HEALTH ADVISOR</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/profile/">ABOUT</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/profile/">TRANSACTION HISTORY</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+        <li class="input-group rounded mt-0">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" />
+            <button type="submit" style="cursor: pointer;" class="input-group-text border-0" id="search-addon">
+                <i class="fas fa-search"></i>
+            </button>
+        </li>
+    </ul>
+</nav>
