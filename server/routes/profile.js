@@ -31,6 +31,13 @@ router.get('/publications', async (req, res) => {
   res.redirect('/');
 })
 
+router.get('/checkup', async (req, res) => {
+  if (req.isAuthenticated()) {
+    return res.render('usersProfile/checkUp.ejs');
+  }
+  res.redirect('/');
+})
+
 
 
 router.get('/edit', (req, res) => {
@@ -38,7 +45,6 @@ router.get('/edit', (req, res) => {
     return res.render('usersProfile/editProfile.ejs');
   }
   res.redirect('/');
-
 })
 
 router.post('/edit/profilePicture', upload.single("croppedImage"), async (req, res, next) => {
