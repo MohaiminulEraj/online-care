@@ -38,7 +38,12 @@ router.get('/checkup', async (req, res) => {
   res.redirect('/');
 })
 
-
+router.get('/consultant', async (req, res) => {
+  if (req.isAuthenticated()) {
+    return res.render('usersProfile/consultant.ejs');
+  }
+  res.redirect('/');
+})
 
 router.get('/edit', (req, res) => {
   if (req.isAuthenticated()) {
@@ -65,7 +70,7 @@ router.post('/edit/profilePicture', upload.single("croppedImage"), async (req, r
     let targetPath = path.join(__dirname, `../${filePath}`)
 
     fs.rename(tempPath, targetPath, error => {
-      if(error != null){
+      if (error != null) {
         console.log(error);
         return res.sendStatus(400);
       }
