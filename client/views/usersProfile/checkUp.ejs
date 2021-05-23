@@ -329,11 +329,10 @@
                 <div class="row">
                     <div class="col-sm-12 text-center col-xs-height my-4">
                         <div>
-                            <a href="#" data-toggle="modal" data-target="#formModal"
-                                class="modalBtn btn btn-success mt-4 mb-4">Prescribe</a>
+                            <a href="#" data-toggle="modal" data-target="#prescribeFormModal" class="modalBtn btn btn-success mt-4 mb-4">Prescribe</a>
                         </div>
                         <div>
-                            <a href="#" class="modalBtn btn btn-warning mb-4">Diagnose</a>
+                            <a href="#" data-toggle="modal" data-target="#diagnoseFormModal" class="modalBtn btn btn-warning mb-4">Diagnose</a>
                         </div>
                     </div>
                 </div>
@@ -343,8 +342,9 @@
     </div>
 </div>
 
+<!-- Prescribed Modal  -->
 
-<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="prescribeFormModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="margin-top: 17%;">
         <div class="modal-content">
             <div class="modal-body form-modal">
@@ -398,7 +398,11 @@
                             <input id="pPhoneNum" type="number" class="form-control rounded" name="paitientOccupation"
                                 placeholder="Phone Number" value="" disabled>
                         </div>
-
+                        <div class="col-sm-12 mb-2">
+                            <label for="pPhoneNum">Prescribed By</label>
+                            <input id="pPhoneNum" type="number" class="form-control rounded" name="paitientOccupation"
+                                placeholder="Consultant Doctor" value="" disabled>
+                        </div>
                         <div class="col-sm-12 text-center col-xs-height">
                             <div>
                                 <input id="dName" class="form-control rounded col-xs-12 mb-2" type="text"
@@ -414,18 +418,18 @@
                                     <li class="col-sm-6 mb-2">
                                         <label for="medicineName">Madicne Name:</label>
                                         <input id="medicineName" type="text" class="form-control rounded"
-                                            name="medicineName" value="" placeholder="Medecine">
+                                            name="medicineName" value="" placeholder="Medecine" required>
                                     </li>
                                     <li class="col-sm-6 mb-2">
                                         <label for="dRange">Date Range</label>
                                         <input id="dRange" type="date" class="form-control rounded" name="dateRange"
-                                            value="" placeholder="Date Range">
+                                            value="" placeholder="Date Range" required>
                                     </li>
                                     <li class="col-sm-12 mb-1">
                                         <label for="">Time:</label>
                                     </li>
                                     <li class="col-sm-6 mb-2">
-                                        <input class="form-control rounded" type="time">
+                                        <input class="form-control rounded" type="time" required>
                                     </li>
                                     <li class="col-sm-6 mb-2">
                                         <input class="form-control rounded" type="time">
@@ -453,23 +457,105 @@
     </div>
 </div>
 
+<!-- Diagnostic Modal  -->
+
+<div class="modal fade" id="diagnoseFormModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="margin-top: 17%;">
+        <div class="modal-content">
+            <div class="modal-body form-modal">
+                <form action="">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4>Create a Diagnostic Report</h4>
+                    <div class="row">
+                        <div class="col-sm-9 mb-2">
+                            <div>
+                                <label for="patientName">Patient Name</label>
+                                <input id="patientName" class="form-control rounded col-xs-12" type="text"
+                                    placeholder="Patient Name" disabled>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <label for="tDate">Date</label>
+                            <input id="tDate" class="form-control" type="text" class="form-control rounded"
+                                name="prescribedDate" value="<%= new Date().toDateString() %>" disabled>
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <div>
+                                <label for="pDOB">Date Of Birth</label>
+                                <input id="pDOB" class="form-control rounded col-xs-12" type="date"
+                                    placeholder="Date of Birth" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <label for="pAge">Age</label>
+                            <input id="pAge" type="number" class="form-control rounded" name="patientAge"
+                                placeholder="Age" value="" disabled>
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <label for="pSex">Sex</label>
+                            <input id="pSex" type="text" class="form-control rounded" name="paitientSex"
+                                placeholder="Sex" value="" disabled>
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <label for="pOccupation">Occupation</label>
+                            <input id="pOccupation" type="text" class="form-control rounded" name="paitientOccupation"
+                                placeholder="Occupation" value="" disabled>
+                        </div>
+                        <div class="col-sm-9 mb-2">
+                            <label for="pAddress">Address</label>
+                            <input id="pAddress" type="text" class="form-control rounded" name="paitientOccupation"
+                                placeholder="Address" value="" disabled>
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <label for="pPhoneNum">Cell No</label>
+                            <input id="pPhoneNum" type="number" class="form-control rounded" name="paitientOccupation"
+                                placeholder="Phone Number" value="" disabled>
+                        </div>
+                        <div class="col-sm-12 mb-2">
+                            <label for="pPhoneNum">Prescribed By</label>
+                            <input id="pPhoneNum" type="number" class="form-control rounded" name="paitientOccupation"
+                                placeholder="Consultant Doctor" value="" disabled>
+                        </div>
+                        <div class="col-sm-12 text-center col-xs-height">
+                            <div>
+                                <input id="dName" class="form-control rounded col-xs-12 mb-2" type="text"
+                                    name="diseaseName" placeholder="Test Name" value="">
+                                <textarea class="form-control rounded mb-2" name="" id="" cols="30" rows="3"
+                                    name="diseaseName" placeholder="Test Description"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-xs-height">
+                            <div>
+                                <button style="float: right" class="btn btn-success" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <script>
     $('#addMedicineBtn').click(function () {
         let addMedicine = `<li class="col-sm-6 mb-2">
                                         <label for="medicineName">Madicne Name:</label>
                                         <input id="medicineName" type="text" class="form-control rounded"
-                                            name="medicineName" value="" placeholder="Medecine">
+                                            name="medicineName" value="" placeholder="Medecine" required>
                                     </li>
                                     <li class="col-sm-6 mb-2">
                                         <label for="dRange">Date Range</label>
                                         <input id="dRange" type="date" class="form-control rounded" name="dateRange"
-                                            value="" placeholder="Date Range">
+                                            value="" placeholder="Date Range" required>
                                     </li>
                                     <li class="col-sm-12 mb-1">
                                         <label for="">Time:</label>
                                     </li>
                                     <li class="col-sm-6 mb-2">
-                                        <input class="form-control rounded" type="time">
+                                        <input class="form-control rounded" type="time" required>
                                     </li>
                                     <li class="col-sm-6 mb-2">
                                         <input class="form-control rounded" type="time">
@@ -482,5 +568,6 @@
                                     </li>`
         $('#medicineList').append(addMedicine);
     })
+
 </script>
 <%- include('../partials/footer.ejs') %>

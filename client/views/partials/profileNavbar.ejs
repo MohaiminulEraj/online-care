@@ -18,10 +18,10 @@
                 <a class="nav-link active"  href="/article/editorpanel">CHECK UP</a>
             </li> -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="/profile/">DIAGNOSTIC REPORTS</a>
+                    <a class="nav-link active" href="/profile/diagnosticReports">DIAGNOSTIC REPORTS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/profile/">PRESCRIPTION</a>
+                    <a class="nav-link active" href="/profile/prescriptions">PRESCRIPTION</a>
                 </li>
                 <% if(loggedInUser && loggedInUser.license_no !== '0' && loggedInUser.university !== 'University' && loggedInUser.reference_no[0] !== '(Seperated By Comma)') {%>
                 <li class="nav-item">
@@ -30,6 +30,9 @@
                 <% }%>
                 <li class="nav-item">
                     <a class="nav-link active" href="/profile/consultant">CONSULTANT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/profile/">FAMILY</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="/profile/">DRUG STORE</a>
