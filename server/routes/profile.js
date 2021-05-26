@@ -56,6 +56,11 @@ router.get('/diagnosticReports', async (req, res) => {
   }
   res.redirect('/');
 })
+
+router.get('/diagnosticReportUpload', async (req, res) => {
+  return res.render('usersProfile/diagnosticReportUpload.ejs');
+})
+
 router.get('/edit', (req, res) => {
   if (req.isAuthenticated()) {
     return res.render('usersProfile/editProfile.ejs');

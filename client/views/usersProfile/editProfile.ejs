@@ -156,6 +156,18 @@
     </div>
   </div>
 
+  <ul class="row list-unstyled mb-3" id="addLang">
+    <li class="col-sm-12">
+      <select class="form-control" name="findDrugStore" id="findDrugStore">
+        <option value="1" selected="selected" disabled>Add Language:</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </li>
+  </ul>
+  <button type="button" id="addLangBtn" class="btn btn-outline-primary">Add More Language</button>
   <button style="float: right;" type="submit" class="btn btn-outline-success">Save</button>
 </form>
 
@@ -173,10 +185,10 @@
 
       <!--Body-->
       <div class="container modal-body" id="imgUploadModal">
-          <input type="file" name="filePhoto" id="filePhoto" accept="image/*">
-          <div class="imagePreviewContainer mt-3">
-            <img src="" id="imagePreview" alt="">
-          </div>
+        <input type="file" name="filePhoto" id="filePhoto" accept="image/*">
+        <div class="imagePreviewContainer mt-3">
+          <img src="" id="imagePreview" alt="">
+        </div>
       </div>
       <!-- footer  -->
       <div class="modal-footer">
@@ -234,7 +246,8 @@
 
 <!-- Doctor Info  -->
 
-<form style="margin-top: 40px;" class="container" action="/profile/edit/<%=loggedInUser._id%>?_method=PATCH" method="POST">
+<form style="margin-top: 40px;" class="container" action="/profile/edit/<%=loggedInUser._id%>?_method=PATCH"
+  method="POST">
   <div class="form-row mb-3">
     <div class="col">
       <h3 style="text-align: center;">Professional Info (Applicable if you are a Doctor):</h3>
@@ -256,11 +269,13 @@
     <div class="col">
       <label for="refNo">Reference ID:</label>
       <input id="refNo" type="text" class="form-control" placeholder="Separated by comma" name="reference_no"
-        value="<%= loggedInUser.reference_no[0] !== '(Seperated By Comma)' ? loggedInUser.reference_no : '' %>" required>
+        value="<%= loggedInUser.reference_no[0] !== '(Seperated By Comma)' ? loggedInUser.reference_no : '' %>"
+        required>
     </div>
     <div class="col">
       <label for="dept_doc">Department:</label>
-      <input id="dept_doc" type="text" class="form-control" name="dept_doc" value="<%= loggedInUser.dept_doc !== 'dept' ? loggedInUser.dept_doc : '' %>" required>
+      <input id="dept_doc" type="text" class="form-control" name="dept_doc"
+        value="<%= loggedInUser.dept_doc !== 'dept' ? loggedInUser.dept_doc : '' %>" required>
     </div>
     <div class="col">
       <label for="fileUpload">Credentials:</label>
@@ -269,9 +284,21 @@
   </div>
   <button style="float: right;" type="submit" class="btn btn-outline-success">Update</button>
 </form>
-<script src="../js/jquery-3.5.1.min.js"></script>
-
 <script>
+  $('#addLangBtn').on('click', function () {
+    let addLang = `<li class="col-sm-12">
+      <select class="form-control" name="findDrugStore" id="findDrugStore">
+        <option value="1" selected="selected" disabled>Add Language:</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </li>`
+    $("#addLang").append(addLang);
+  })
+
+
   let addContactBtn = document.getElementById('addEmergencyContactBtn')
   $('#addEmergencyContactRow').on('click', function () {
     var $td = $(this).closest('tr').find('td');
@@ -377,7 +404,7 @@
 
   $("#imageUploadBtn").click(() => {
     let canvas = cropper.getCroppedCanvas();
-    if(canvas == null){
+    if (canvas == null) {
       alert("Could not upload image. Make sure it is an image file.");
       return;
     }
@@ -390,10 +417,10 @@
         url: "/profile/edit/profilePicture",
         type: "POST",
         data: formData,
-        cache : false,
+        cache: false,
         processData: false,
         currentType: false,
-        success: (data) => { 
+        success: (data) => {
           console.log(data);
           location.reload();
         },

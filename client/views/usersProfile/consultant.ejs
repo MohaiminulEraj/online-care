@@ -49,7 +49,7 @@
             <div class="card-body">
                 <h5 class="card-title" style="color: #000;"> Monogram </h5>
                 <button type="submit" class="btn btn-info" style="float:left"><i class="fas fa-address-book"></i></button>
-                <button class="btn btn-secondary"><i class="fas fa-calendar-check"></i></button>
+                <button  data-toggle="modal" data-target="#appointmentModal" class="btn btn-secondary"><i class="fas fa-calendar-check"></i></button>
                 <button class="btn btn-danger" style="float:right"><i class="fas fa-trash-alt"></i></button>
 
             </div>
@@ -286,6 +286,107 @@
             </div>
         </div>
     </div>
-
 </div>
+
+<!-- Appointment Modal  -->
+
+<div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="margin-top: 17%;">
+        <div class="modal-content">
+            <div class="modal-body form-modal">
+                <form action="">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4>Appointment</h4>
+                    <div class="row">
+                        <div class="col-sm-9 mb-2">
+                            <div>
+                                <label for="patientName">Doctor Name</label>
+                                <input id="patientName" class="form-control rounded col-xs-12" type="text"
+                                    placeholder="Doctor Name" disabled>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <label for="appointmentDate">Date</label>
+                            <input id="appointmentDate" class="form-control" type="date" class="form-control rounded"
+                                name="appointmentDate" value="">
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <div>
+                                <label for="pDOB">Date Of Birth</label>
+                                <input id="pDOB" class="form-control rounded col-xs-12" type="time"
+                                    placeholder="Date of Birth">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <label for="pAge">Age</label>
+                            <input id="pAge" type="number" class="form-control rounded" name="patientAge"
+                                placeholder="Age" value="" disabled>
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <label for="pSex">Sex</label>
+                            <input id="pSex" type="text" class="form-control rounded" name="paitientSex"
+                                placeholder="Sex" value="" disabled>
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <label for="pOccupation">Occupation</label>
+                            <input id="pOccupation" type="text" class="form-control rounded" name="paitientOccupation"
+                                placeholder="Occupation" value="" disabled>
+                        </div>
+                        <div class="col-sm-9 mb-2">
+                            <label for="pAddress">Address</label>
+                            <input id="pAddress" type="text" class="form-control rounded" name="paitientOccupation"
+                                placeholder="Address" value="" disabled>
+                        </div>
+                        <div class="col-sm-3 mb-2">
+                            <label for="pPhoneNum">Cell No</label>
+                            <input id="pPhoneNum" type="number" class="form-control rounded" name="paitientOccupation"
+                                placeholder="Phone Number" value="" disabled>
+                        </div>
+                        <div class="col-sm-12 mb-2">
+                            <label for="pPhoneNum">Prescribed By</label>
+                            <input id="pPhoneNum" type="number" class="form-control rounded" name="paitientOccupation"
+                                placeholder="Consultant Doctor" value="" disabled>
+                        </div>
+                        <div class="col-sm-12 text-center col-xs-height">
+                            <div>
+                                <input id="dName" class="form-control rounded col-xs-12 mb-2" type="text"
+                                    name="diseaseName" placeholder="Test Name" value="" disabled>
+                                <textarea class="form-control rounded mb-2" name="" id="" cols="30" rows="3"
+                                    name="diseaseName" placeholder="Test Description" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 mb-2">
+                            <input class="form-check-input ml-2 mt-3 mb-0" onClick="getSelectedField()" id="r1" type="radio" name="inlineRadioOptions">
+                            <select style="margin-left: 24px; width:93%;" class="form-control" name="findDrugStore" id="findDrugStore">
+                                <option value="1" selected="selected" disabled>Find Lab Store:</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 mb-2 form-check form-switch">
+                            <input class="form-check-input mt-3 mb-0" onClick="getSelectedField()" type="radio" onClick="getSelectedField()" id="r2" name="inlineRadioOptions">
+                            <input id="newDragStoreEmail" type="email" class="form-control rounded"
+                                name="newDragStoreEmail" value="" placeholder="Email your drug store">
+                        </div>
+                        <div class="form-check form-switch col-sm-4 mt-2">
+                            <input class="form-check-input" onClick="getSelectedField()" id="r3" type="radio" name="inlineRadioOptions">
+                            <label class="form-check-label" for="r3">Recommended Lab Store</label>
+                        </div>
+                        <div class="col-sm-12 col-xs-height">
+                            <div>
+                                <button style="float: right" class="btn btn-success" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <%- include('../partials/footer.ejs') %>

@@ -1,7 +1,6 @@
 </head>
 
 <body>
-
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -11,7 +10,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" href="/"><i class="fas fa-home"></i></a>
+            <a class="nav-link active" href="/"><i class="fas fa-home fa-lg"></i></a>
           </li>
           <% if(loggedInUser && loggedInUser.gender !== 'Gender' && loggedInUser.country !== 'Country') {%>
           <li class="nav-item">
@@ -32,6 +31,9 @@
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
               <li><a class="dropdown-item" href="/profile">My Profile</a></li>
               <li><a class="dropdown-item" href="/profile/edit">Edit Profile</a></li>
+              <% if(loggedInUser && loggedInUser.license_no !== '0' && loggedInUser.university !== 'University' && loggedInUser.reference_no[0] !== '(Seperated By Comma)') {%>
+              <li><a class="dropdown-item" data-toggle="modal" data-target="#scheduleModal">Schedule</a></li>
+              <% }%>
               <li>
                 <hr>
               </li>
@@ -66,7 +68,8 @@
         <div class="container modal-body" id="loginclick">
           <form action="/login" method="POST">
             <div class="form-group">
-              <input type="text" name="username" class="form-control username" placeholder="Username" value="eraj" required>
+              <input type="text" name="username" class="form-control username" placeholder="Username" value="eraj"
+                required>
             </div>
             <div class="form-group">
               <input type="password" name="password" class="form-control" placeholder="Password" value="eraj" required>
@@ -130,8 +133,229 @@
     </div>
   </div>
 
+  <!-- Schedule Modal  -->
+
+  <div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl" style="margin-top: 17%;">
+      <div class="modal-content">
+        <div class="modal-body form-modal">
+          <form action="">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+            <h4>Appointment Schedule</h4>
+            <div class="row">
+              <div class="col mb-2">
+                <input id="scheduleSystem" type="checkbox" data-toggle="toggle" data-on="Serialwise" data-off="Slotwise"
+                  data-onstyle="success" data-offstyle="primary" data-width="120">
+              </div>
+              <div class="col mb-2">
+                <input id="r1" name="timeSlot" type="radio">
+                <label for="r1">10 Minuetes Slot</label>
+              </div>
+              <div class="col mb-2">
+                <input id="r2" name="timeSlot" type="radio">
+                <label for="r2">15 Minuetes Slot</label>
+              </div>
+              <div class="col mb-2">
+                <input id="r3" name="timeSlot" type="radio">
+                <label for="r3">20 Minuetes Slot</label>
+              </div>
+              <div class="col mb-2">
+                <input id="r4" name="timeSlot" type="radio">
+                <label for="r4">30 Minuetes Slot</label>
+              </div>
+            </div>
+            <h6>Days:</h6>
+
+            <div class="row">
+              <div class="col mb-2">
+                <input type="checkbox" data-toggle="toggle" data-on="Available" data-off="Saturday"
+                  data-onstyle="success" data-offstyle="primary" data-width="100">
+                <ul class="list-unstyled" id="docTime1">
+                  <li>
+                    <label style="margin-top: 2px" for="sTime1">Start Time</label>
+                    <input id="sTime1" type="time">
+                    <label style="margin-top: 2px" for="eTime1">End Time</label>
+                    <input id="eTime1" type="time">
+                  </li>
+                </ul>
+                <button id="addDocTime1" type="button" class="btn btn-success mt-2">Add</button>
+              </div>
+              <div class="col mb-2">
+                <input type="checkbox" data-toggle="toggle" data-on="Available" data-off="Sunday" data-onstyle="success"
+                  data-offstyle="primary" data-width="100">
+                <ul class="list-unstyled" id="docTime2">
+                  <li>
+                    <label style="margin-top: 2px" for="sTime2">Start Time</label>
+                    <input id="sTime2" type="time">
+                    <label style="margin-top: 2px" for="eTime2">End Time</label>
+                    <input id="eTime2" type="time">
+                  </li>
+                </ul>
+                <button id="addDocTime2" type="button" class="btn btn-success mt-2">Add</button>
+              </div>
+              <div class="col mb-2">
+                <input type="checkbox" data-toggle="toggle" data-on="Available" data-off="Monday" data-onstyle="success"
+                  data-offstyle="primary" data-width="100">
+                <ul class="list-unstyled" id="docTime3">
+                  <li>
+                    <label style="margin-top: 2px" for="sTime3">Start Time</label>
+                    <input id="sTime3" type="time">
+                    <label style="margin-top: 2px" for="eTime3">End Time</label>
+                    <input id="eTime3" type="time">
+                  </li>
+                </ul>
+                <button id="addDocTime3" type="button" class="btn btn-success mt-2">Add</button>
+              </div>
+              <div class="col mb-2">
+                <input type="checkbox" data-toggle="toggle" data-on="Available" data-off="Tuesday"
+                  data-onstyle="success" data-offstyle="primary" data-width="100">
+                <ul class="list-unstyled" id="docTime4">
+                  <li>
+                    <label style="margin-top: 2px" for="sTime4">Start Time</label>
+                    <input id="sTime4" type="time">
+                    <label style="margin-top: 2px" for="eTime4">End Time</label>
+                    <input id="eTime4" type="time">
+                  </li>
+                </ul>
+                <button id="addDocTime4" type="button" class="btn btn-success mt-2">Add</button>
+              </div>
+              <div class="col mb-2">
+                <input type="checkbox" data-toggle="toggle" data-on="Available" data-off="Wednesday"
+                  data-onstyle="success" data-offstyle="primary" data-width="120">
+                <ul class="list-unstyled" id="docTime5">
+                  <li>
+                    <label style="margin-top: 2px" for="sTime5">Start Time</label>
+                    <input id="sTime5" type="time">
+                    <label style="margin-top: 2px" for="eTime5">End Time</label>
+                    <input id="eTime5" type="time">
+                  </li>
+                </ul>
+                <button id="addDocTime5" type="button" class="btn btn-success mt-2">Add</button>
+              </div>
+              <div class="col mb-2">
+                <input type="checkbox" data-toggle="toggle" data-on="Available" data-off="Thursday"
+                  data-onstyle="success" data-offstyle="primary" data-width="100">
+                <ul class="list-unstyled" id="docTime6">
+                  <li>
+                    <label style="margin-top: 2px" for="sTime6">Start Time</label>
+                    <input id="sTime6" type="time">
+                    <label style="margin-top: 2px" for="eTime6">End Time</label>
+                    <input id="eTime6" type="time">
+                  </li>
+                </ul>
+                <button id="addDocTime6" type="button" class="btn btn-success mt-2">Add</button>
+              </div>
+              <div class="col mb-2">
+                <input type="checkbox" data-toggle="toggle" data-on="Available" data-off="Friday" data-onstyle="success"
+                  data-offstyle="primary" data-width="100">
+                <ul class="list-unstyled" id="docTime7">
+                  <li>
+                    <label style="margin-top: 2px" for="sTime7">Start Time</label>
+                    <input id="sTime7" type="time">
+                    <label style="margin-top: 2px" for="eTime7">End Time</label>
+                    <input id="eTime7" type="time">
+                  </li>
+                </ul>
+                <button id="addDocTime7" type="button" class="btn btn-success mt-2">Add</button>
+              </div>
+
+              <div class="col-sm-12 col-xs-height mt-4">
+                <div>
+                  <button class="btn btn-warning" type="button">Check time conflict</button>
+                  <button style="float: right" class="btn btn-success" type="submit">Save</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <script>
     function check() {
       alert('User needs to have a varified account to create an article')
     }
+
+    $('#addDocTime1').click(function () {
+      let addDocTime1 = `<li>
+                    <label style="margin-top: 2px" for="sTime[]]">Start Time</label>
+                    <input id="sTime[]]" type="time">
+                    <label style="margin-top: 2px" for="eTime[]]">End Time</label>
+                    <input id="eTime[]" type="time">
+                  </li>`
+      $('#docTime1').append(addDocTime1);
+    })
+    $('#addDocTime2').click(function () {
+      let addDocTime2 = `<li>
+                    <label style="margin-top: 2px" for="sTime[]]">Start Time</label>
+                    <input id="sTime[]]" type="time">
+                    <label style="margin-top: 2px" for="eTime[]]">End Time</label>
+                    <input id="eTime[]" type="time">
+                  </li>`
+      $('#docTime2').append(addDocTime2);
+    })
+    $('#addDocTime3').click(function () {
+      let addDocTime3 = `<li>
+                    <label style="margin-top: 2px" for="sTime[]]">Start Time</label>
+                    <input id="sTime[]]" type="time">
+                    <label style="margin-top: 2px" for="eTime[]]">End Time</label>
+                    <input id="eTime[]" type="time">
+                  </li>`
+      $('#docTime3').append(addDocTime3);
+    })
+    $('#addDocTime4').click(function () {
+      let addDocTime4 = `<li>
+                    <label style="margin-top: 2px" for="sTime[]]">Start Time</label>
+                    <input id="sTime[]]" type="time">
+                    <label style="margin-top: 2px" for="eTime[]]">End Time</label>
+                    <input id="eTime[]" type="time">
+                  </li>`
+      $('#docTime4').append(addDocTime4);
+    })
+    $('#addDocTime5').click(function () {
+      let addDocTime5 = `<li>
+                    <label style="margin-top: 2px" for="sTime[]]">Start Time</label>
+                    <input id="sTime[]]" type="time">
+                    <label style="margin-top: 2px" for="eTime[]]">End Time</label>
+                    <input id="eTime[]" type="time">
+                  </li>`
+      $('#docTime5').append(addDocTime5);
+    })
+    $('#addDocTime6').click(function () {
+      let addDocTime6 = `<li>
+                    <label style="margin-top: 2px" for="sTime[]]">Start Time</label>
+                    <input id="sTime[]]" type="time">
+                    <label style="margin-top: 2px" for="eTime[]]">End Time</label>
+                    <input id="eTime[]" type="time">
+                  </li>`
+      $('#docTime6').append(addDocTime6);
+    })
+    $('#addDocTime7').click(function () {
+      let addDocTime7 = `<li>
+                    <label style="margin-top: 2px" for="sTime[]]">Start Time</label>
+                    <input id="sTime[]]" type="time">
+                    <label style="margin-top: 2px" for="eTime[]]">End Time</label>
+                    <input id="eTime[]" type="time">
+                  </li>`
+      $('#docTime7').append(addDocTime7);
+    })
+    
+    $('#scheduleSystem').change(function () {
+      if (document.getElementById('scheduleSystem').checked) {
+        document.getElementById('r1').disabled = true;
+        document.getElementById('r2').disabled = true;
+        document.getElementById('r3').disabled = true;
+        document.getElementById('r4').disabled = true;
+      } 
+      else if (!document.getElementById('scheduleSystem').checked) {
+        document.getElementById('r1').disabled = false;
+        document.getElementById('r2').disabled = false;
+        document.getElementById('r3').disabled = false;
+        document.getElementById('r4').disabled = false;
+      }
+    })
   </script>
