@@ -61,6 +61,19 @@ router.get('/diagnosticReportUpload', async (req, res) => {
   return res.render('usersProfile/diagnosticReportUpload.ejs');
 })
 
+router.get('/meetPatient', async (req, res) => {
+  if (req.isAuthenticated()) {
+    return res.render('usersProfile/meetPatient.ejs');
+  }
+  res.redirect('/');
+})
+
+router.get('/meetConsulant', async (req, res) => {
+  if (req.isAuthenticated()) {
+    return res.render('usersProfile/meetConsulant.ejs');
+  }
+  res.redirect('/');
+})
 router.get('/edit', (req, res) => {
   if (req.isAuthenticated()) {
     return res.render('usersProfile/editProfile.ejs');

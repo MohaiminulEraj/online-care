@@ -1,0 +1,254 @@
+<%- include('../partials/head.ejs') %>
+
+<%- include('../partials/navbar.ejs') %>
+
+<%- include('../partials/profileView.ejs') %>
+
+<%- include('../partials/profileNavbar.ejs') %>
+
+<style>
+    .wrapper {
+        max-height: 320px;
+        height: 320px;
+        border: 1px solid #ddd;
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .item {
+        margin: 1% 2%;
+    }
+
+    .wrapper .item {
+        min-width: 182px;
+        height: 110px;
+        /* line-height: 110px; */
+        text-align: center;
+        background-color: #ddd;
+        margin-right: 2px;
+    }
+
+    .btn {
+        padding: 3px;
+        margin: 0;
+    }
+
+    .modalBtn {
+        padding: 20px;
+    }
+
+    .modal-body {
+        background-color: grey;
+        color: white;
+    }
+
+    .form-modal {
+        background-color: lightslategray;
+    }
+</style>
+
+<a href="/profile/meetConsulant" style="font-size:20px" class="btn btn-dark mx-2 mt-2">Meet Consultant</a>
+<div class="container">
+    <h3>Chat with Doc</h3>
+    <textarea class="form-control rounded mb-2" name="" id="" cols="30" rows="10"></textarea>
+    <input type="text" class="form-control rounded" placeholder="Send Message" />
+</div>
+<div class="container-fluid rounded my-2">
+    <div class="row">
+        <div class="col-sm-8">
+        <input type="checkbox" data-toggle="toggle" data-on="Patients in serial" data-off="Online Patient" data-onstyle="success" data-offstyle="primary" data-width="200" data-height="30">
+        </div>
+        <div class="input-group col-sm-4 my-1">
+            <input class="form-control" type="search" placeholder="search">
+            <span class="input-group-append">
+              <button class="form-control btn btn-outline-secondary" type="button">
+                  <i class="fa fa-search"></i>
+              </button>
+            </span>
+      </div>
+    </div>
+</div>
+
+<div class="wrapper">
+    <!-- Product-1 -->
+    <div class="item">
+        <div class="card">
+            <img class="card-img-top" src="https://th.bing.com/th/id/OIP.N_QuR94NnoxktbrCAr_yVAHaHa?pid=ImgDet&rs=1"
+                width="100" height="155">
+            <div class="card-body">
+                <h5 class="card-title mb-0" style="color: #000;"> Monogram </h5>
+                <h6 class="card-title mb-2" style="color: #000;"> Meet @ Serial# 01 </h6>
+                <button type="submit" class="btn btn-info" style="float:left"><i
+                        class="fas fa-address-book"></i></button>
+                <button class="btn btn-success"><i class="fas fa-comment-medical fa-lg"></i></button>
+                <button class="btn btn-primary" style="float:right">Prepare</button>
+            </div>
+        </div>
+    </div>
+    <!-- Product-2 -->
+    <div class="item mr-2">
+        <div class="card">
+            <img class="card-img-top"
+                src="https://images.cdn1.stockunlimited.net/preview1300/set-of-abstract-logo-elements_1939319.jpg"
+                width="100" height="155">
+            <div class="card-body">
+                <h5 class="card-title mb-0" style="color: #000;"> Abstract Logo </h5>
+                <h6 class="card-title mb-2" style="color: #000;"> Meet @ 11:13 AM </h6>
+                <button type="submit" class="btn btn-info" style="float:left"><i
+                    class="fas fa-address-book"></i></button>
+            <button class="btn btn-success"><i class="fas fa-comment-medical fa-lg"></i></button>
+            <button class="btn btn-primary" style="float:right">Prepare</button>
+            </div>
+        </div>
+    </div>
+    <!-- Product-3 -->
+    <div class="item mr-2">
+        <div class="card">
+            <img class="card-img-top" src="https://th.bing.com/th/id/OIP.STpCrwQGL049wi_VT6YuWQHaFj?pid=ImgDet&rs=1"
+                width="100" height="155">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #000;"> Mascot Logo </h5>
+                <button type="submit" class="btn btn-info" style="float:left"><i
+                        class="fas fa-address-book"></i></button>
+                <button class="btn btn-success">Advise <i class="fas fa-notes-medical"></i></button>
+                <button class="btn btn-danger" style="float:right"><i class="fas fa-trash-alt"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- extra  -->
+
+
+    <!-- Product-1 -->
+    <div class="item mr-2">
+        <div class="card">
+            <img class="card-img-top" src="https://th.bing.com/th/id/OIP.N_QuR94NnoxktbrCAr_yVAHaHa?pid=ImgDet&rs=1"
+                width="100" height="155">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #000;"> Monogram </h5>
+                <button type="submit" class="btn btn-info" style="float:left"><i
+                        class="fas fa-address-book"></i></button>
+                <button class="btn btn-success">Advise <i class="fas fa-notes-medical"></i></button>
+                <button class="btn btn-danger" style="float:right"><i class="fas fa-trash-alt"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- Product-2 -->
+    <div class="item mr-2">
+        <div class="card">
+            <img class="card-img-top"
+                src="https://images.cdn1.stockunlimited.net/preview1300/set-of-abstract-logo-elements_1939319.jpg"
+                width="100" height="155">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #000;"> Abstract Logo </h5>
+                <button type="submit" class="btn btn-info" style="float:left"><i
+                        class="fas fa-address-book"></i></button>
+                <button class="btn btn-success">Advise <i class="fas fa-notes-medical"></i></button>
+                <button class="btn btn-danger" style="float:right"><i class="fas fa-trash-alt"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- Product-3 -->
+    <div class="item mr-2">
+        <div class="card">
+            <img class="card-img-top" src="https://th.bing.com/th/id/OIP.STpCrwQGL049wi_VT6YuWQHaFj?pid=ImgDet&rs=1"
+                width="100" height="155">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #000;"> Mascot Logo </h5>
+                <button type="submit" class="btn btn-info" style="float:left"><i
+                        class="fas fa-address-book"></i></button>
+                <button class="btn btn-success">Advise <i class="fas fa-notes-medical"></i></button>
+                <button class="btn btn-danger" style="float:right"><i class="fas fa-trash-alt"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- Product-1 -->
+    <div class="item mr-2">
+        <div class="card">
+            <img class="card-img-top" src="https://th.bing.com/th/id/OIP.N_QuR94NnoxktbrCAr_yVAHaHa?pid=ImgDet&rs=1"
+                width="100" height="155">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #000;"> Monogram </h5>
+                <button type="submit" class="btn btn-info" style="float:left"><i
+                        class="fas fa-address-book"></i></button>
+                <button class="btn btn-success">Advise <i class="fas fa-notes-medical"></i></button>
+                <button class="btn btn-danger" style="float:right"><i class="fas fa-trash-alt"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- Product-2 -->
+    <div class="item mr-2">
+        <div class="card">
+            <img class="card-img-top"
+                src="https://images.cdn1.stockunlimited.net/preview1300/set-of-abstract-logo-elements_1939319.jpg"
+                width="100" height="155">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #000;"> Abstract Logo </h5>
+                <button type="submit" class="btn btn-info" style="float:left"><i
+                        class="fas fa-address-book"></i></button>
+                <button class="btn btn-success">Advise <i class="fas fa-notes-medical"></i></button>
+                <button class="btn btn-danger" style="float:right"><i class="fas fa-trash-alt"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- Product-3 -->
+    <div class="item mr-2">
+        <div class="card">
+            <img class="card-img-top" src="https://th.bing.com/th/id/OIP.STpCrwQGL049wi_VT6YuWQHaFj?pid=ImgDet&rs=1"
+                width="100" height="155">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #000;"> Mascot Logo </h5>
+                <button type="submit" class="btn btn-info" style="float:left"><i
+                        class="fas fa-address-book"></i></button>
+                <button class="btn btn-success">Advise <i class="fas fa-notes-medical"></i></button>
+                <button class="btn btn-danger" style="float:right"><i class="fas fa-trash-alt"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- Product-3 -->
+    <div class="item mr-2">
+        <div class="card">
+            <img class="card-img-top" src="https://th.bing.com/th/id/OIP.STpCrwQGL049wi_VT6YuWQHaFj?pid=ImgDet&rs=1"
+                width="100" height="155">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #000;"> Mascot Logo </h5>
+                <button type="submit" class="btn btn-info" style="float:left"><i
+                        class="fas fa-address-book"></i></button>
+                <button class="btn btn-success">Advise <i class="fas fa-notes-medical"></i></button>
+                <button class="btn btn-danger" style="float:right"><i class="fas fa-trash-alt"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- Product-3 -->
+    <div class="item mr-2">
+        <div class="card">
+            <img class="card-img-top" src="https://th.bing.com/th/id/OIP.STpCrwQGL049wi_VT6YuWQHaFj?pid=ImgDet&rs=1"
+                width="100" height="155">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #000;"> Mascot Logo </h5>
+                <button type="submit" class="btn btn-info" style="float:left"><i
+                        class="fas fa-address-book"></i></button>
+                <button class="btn btn-success">Advise <i class="fas fa-notes-medical"></i></button>
+                <button class="btn btn-danger" style="float:right"><i class="fas fa-trash-alt"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- Product-3 -->
+    <div class="item mr-2">
+        <div class="card">
+            <img class="card-img-top" src="https://th.bing.com/th/id/OIP.STpCrwQGL049wi_VT6YuWQHaFj?pid=ImgDet&rs=1"
+                width="100" height="155">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #000;"> Mascot Logo </h5>
+                <button type="submit" class="btn btn-info" style="float:left"><i
+                        class="fas fa-address-book"></i></button>
+                <button class="btn btn-success">Advise <i class="fas fa-notes-medical"></i></button>
+                <button class="btn btn-danger" style="float:right"><i class="fas fa-trash-alt"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include('../partials/footer.ejs') %>

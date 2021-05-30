@@ -20,8 +20,8 @@ const LocalStrategy = require('passport-local');
 const profileRoutes = require('./routes/profile');
 const articleRoutes = require('./routes/article');
 
-app.use(bodyParser.json({limit: '50mb'}))
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit:50000}))
+app.use(bodyParser.json({ limit: '50mb' }))
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }))
 app.use(methodOverride('_method'));
 app.use(session({
   secret: "thisshouldbeabettersecret.",
@@ -44,7 +44,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.loggedInUser = req.user;
-  res.locals.success =  req.flash('success');
+  res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   next();
 })
@@ -68,10 +68,10 @@ app.use((req, res, next) => {
 // passport.deserializeUser(Admin.deserializeUser());
 
 // your server routes go here
-app.use('/css', express.static(path.join(__dirname , '../client/public/css')));
-app.use('/files', express.static(path.join(__dirname , '../client/public/files')));
-app.use('/images', express.static(path.join(__dirname , '../client/public/images')));
-app.use('/js', express.static(path.join(__dirname , '../client/public/js')));
+app.use('/css', express.static(path.join(__dirname, '../client/public/css')));
+app.use('/files', express.static(path.join(__dirname, '../client/public/files')));
+app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
+app.use('/js', express.static(path.join(__dirname, '../client/public/js')));
 // app.set('veiws', path.join(__dirname, 'client/views'))
 // app.set('views', 'client/views')
 app.set('views', path.join(__dirname, '../client/views'))
@@ -113,9 +113,9 @@ app.use('/profile', profileRoutes);
 // });
 // const upload = multer({ storage });
 
-app.get('/', function(req, res){
-    // response.sendFile(path.join(__dirname , '../client/index.html'));
-    res.render('home.ejs');
+app.get('/', function (req, res) {
+  // response.sendFile(path.join(__dirname , '../client/index.html'));
+  res.render('home.ejs');
 })
 
 
@@ -126,37 +126,37 @@ app.get('/', function(req, res){
 // Create a user
 
 app.post('/register', async (req, res, next) => {
-  try{
+  try {
     const { firstname, lastname, email, username, password } = req.body;
     const checkEmail = await User.findOne({
       email: email
     })
-    .catch((e) => {
-      req.flash('error', 'Somthing went wrong');
-      res.redirect('/');
-    })
-    if(checkEmail!== null && email == checkEmail.email){
+      .catch((e) => {
+        req.flash('error', 'Somthing went wrong');
+        res.redirect('/');
+      })
+    if (checkEmail !== null && email == checkEmail.email) {
       req.flash('error', 'Email already in use.');
       res.redirect('/');
     }
     const user = new User({ firstname, lastname, email, username });
     const registerUser = await User.register(user, password);
     req.login(registerUser, err => {
-      if(err){
+      if (err) {
         return next(err);
       }
       req.flash('success', 'User created Successfully! To create articles you have to update your profile by going Edit Profile page');
       res.redirect('/');
     })
 
-  } catch(e){
+  } catch (e) {
     req.flash('error', e.message);
     res.redirect('/');
   }
 
 })
 
-app.post('/login', passport.authenticate('local' , { failureFlash: true, failureRedirect: '/'}), (req, res) => {
+app.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/' }), (req, res) => {
   req.flash('success', 'welcome back!');
   res.redirect('/');
 })
@@ -167,11 +167,18 @@ app.get('/logout', (req, res) => {
 })
 
 
-app.get('*', function(req, res){
+app.get('*', function (req, res) {
   res.status(404).send('<h1 style="color:red;"> Page Not Found <h1>');
 });
 
+// server.listen(process.env.PORT || 3000,
+//   process.env.IP || 'localhost', function () {
+//     console.log('Server running');
+//   })
+
 server.listen(process.env.PORT || 3000,
-  process.env.IP || 'localhost', function(){
-  console.log('Server running');
-})
+  '192.168.0.111', function () {
+    console.log('Server running');
+  })
+
+// server.listen(3000, '192.168.0.111'); // IP Forwardning.

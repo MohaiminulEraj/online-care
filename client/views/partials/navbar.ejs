@@ -18,38 +18,60 @@
           </li>
           <% } else {%>
           <li class="nav-item">
-            <a class="nav-link active" href="" onclick="check()">CREATE NEW ARTICLE</a>
+            <a class="nav-link active" onclick="check()">CREATE NEW ARTICLE</a>
           </li>
           <% } %>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <% if(loggedInUser) { %>
-          <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">WELCOME <%= loggedInUser.firstname.toUpperCase() %>
-              <%= loggedInUser.lastname.toUpperCase()  %> </a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="/profile">My Profile</a></li>
-              <li><a class="dropdown-item" href="/profile/edit">Edit Profile</a></li>
-              <% if(loggedInUser && loggedInUser.license_no !== '0' && loggedInUser.university !== 'University' && loggedInUser.reference_no[0] !== '(Seperated By Comma)') {%>
-              <li><a class="dropdown-item" data-toggle="modal" data-target="#scheduleModal">Schedule</a></li>
-              <% }%>
-              <li>
-                <hr>
-              </li>
-              <li><a class="dropdown-item" href="/logout">LOGOUT</a></li>
-            </ul>
-          </li>
-          <% } else { %>
           <li class="nav-item">
-            <a class="nav-link active" data-toggle="modal" data-target="#registerModal" href="#">REGISTER</a>
+            <a class="nav-link active" href="#">SUPPORT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" data-toggle="modal" data-target="#loginModal" href="#">LOGIN</a>
+            <a class="nav-link active" href="#">REVIEW</a>
           </li>
-          <% } %>
         </ul>
       </div>
+      <% if(loggedInUser) {%>
+      <ul class="navbar-nav ml-auto mb-lg-0">
+        <li class="input-group rounded mt-0">
+          <input id="generalSearch" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+            aria-describedby="search-addon" />
+          <button type="submit" style="cursor: pointer;" class="input-group-text border-0 mr-0" id="search-addon">
+            <i class="fas fa-search"></i>
+          </button>
+        </li>
+      </ul>
+      <% } %> 
+      <ul class="navbar-nav ml-auto">
+        <% if(loggedInUser) { %>
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">WELCOME <%= loggedInUser.firstname.toUpperCase() %>
+            <%= loggedInUser.lastname.toUpperCase()  %> </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="/profile">My Profile</a></li>
+            <li><a class="dropdown-item" href="/profile/edit">Edit Profile</a></li>
+            <% if(loggedInUser && loggedInUser.license_no !== '0' && loggedInUser.university !== 'University' && loggedInUser.reference_no[0] !== '(Seperated By Comma)') {%>
+            <li><a class="dropdown-item" data-toggle="modal" data-target="#scheduleModal">Schedule</a></li>
+            <% }%>
+            <li>
+              <hr>
+            </li>
+            <li><a class="dropdown-item" href="/logout">LOGOUT</a></li>
+          </ul>
+        </li>
+      </ul>
+      <% } else { %>
+      <ul class="navbar-nav ml-auto mb-lg-0"></ul>
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="modal" data-target="#registerModal" href="#">REGISTER</a>
+      </li>
+      </ul>
+      <ul class="navbar-nav ml-2">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="modal" data-target="#loginModal" href="#">LOGIN</a>
+        </li>
+        <% } %>
+      </ul>
+
     </div>
   </nav>
 
@@ -343,19 +365,19 @@
                   </li>`
       $('#docTime7').append(addDocTime7);
     })
-    
+
     $('#scheduleSystem').change(function () {
       if (document.getElementById('scheduleSystem').checked) {
         document.getElementById('r1').disabled = true;
         document.getElementById('r2').disabled = true;
         document.getElementById('r3').disabled = true;
         document.getElementById('r4').disabled = true;
-      } 
-      else if (!document.getElementById('scheduleSystem').checked) {
+      } else if (!document.getElementById('scheduleSystem').checked) {
         document.getElementById('r1').disabled = false;
         document.getElementById('r2').disabled = false;
         document.getElementById('r3').disabled = false;
         document.getElementById('r4').disabled = false;
       }
     })
+    
   </script>

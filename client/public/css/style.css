@@ -3,6 +3,10 @@ body {
   color: aliceblue;
 }
 
+.modal-content {
+  background: #696969
+}
+
 
 .searchForm {
   background-color: black;
@@ -42,6 +46,9 @@ body {
 
 }
 
+.table {
+  color: whitesmoke;
+}
 
 .profilePictureBtn {
   position: absolute;
@@ -67,4 +74,21 @@ body {
 .editProfileButton {
   margin-top: 6px;
 
+}
+
+@media only screen and (max-width: 360px) {
+  #generalSearch {
+    width: 200px;
+  }
+
+  .form-control {
+    font-size: xx-small;
+  }
+
+  #precribeTable th,
+  #precribeTable td {
+    font-size: x-small;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

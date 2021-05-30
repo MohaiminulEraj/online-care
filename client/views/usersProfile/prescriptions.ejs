@@ -52,19 +52,23 @@
     }
 </style>
 
-<div class="input-group rounded my-2">
-    <h3 style="text-align: center; margin-right: 70%;">Check Prescriptions</h3>
-    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-        aria-describedby="search-addon" />
-    <button type="submit" style="cursor: pointer;" class="input-group-text border-0" id="search-addon">
-        <i class="fas fa-search"></i>
-    </button>
+<div class="container-fluid rounded my-2">
+    <div class="row">
+            <h3 class="col-sm-8">Check Prescriptions</h3>
+        <div class="input-group col-sm-4 my-1">
+            <input class="form-control" type="search" placeholder="search">
+            <span class="input-group-append">
+              <button class="form-control btn btn-outline-secondary" type="button">
+                  <i class="fa fa-search"></i>
+              </button>
+            </span>
+      </div>
+    </div>
 </div>
 
-<table class="container table">
+<table id="precribeTable" class="container table table-dark">
     <thead>
         <tr>
-            <th width="4%" scope="col-sm-2">#</th>
             <th scope="col">Name</th>
             <th scope="col">Prescribed Date</th>
             <th scope="col">View</th>
@@ -73,13 +77,31 @@
     </thead>
     <tbody id="productList">
         <tr>
-            <td><input type="number" class="form-control text-center" name="" value="1" id='' disabled></td>
-            <td><input type="text" class="form-control" name="disease_name[]" value="Disease Name" id='diseasename-0'
-                    disabled></td>
-            <td><input type="text" class="form-control" value="<%= new Date().toDateString() %>" name="" disabled></td>
-            <td><input type="button" data-toggle="modal" data-target="#prescribeFormModal"
-                    class="form-control btn btn-info" name="" id="" value="View"></td>
-            <td class="dropdown" style="float: right;">
+            <td><input type="button" class="form-control" name="disease_name[]" value="Disease Name" id='diseasename-0'>
+            </td>
+            <td><input type="button" class="form-control" value="<%= new Date().toDateString() %>" name=""></td>
+
+            <td><button data-toggle="modal" data-target="#prescribeFormModal" class="form-control btn btn-info"><i
+                        class="fas fa-eye fa-lg"></i></button>
+            </td>
+            <td class="dropdown">
+                <input type="button" class="form-control dropbtn btn btn-warning" name="" id="" value="...">
+                <div class="dropdown-content">
+                    <a href="#" data-toggle="modal" data-target="#getDrugsModal">GET DRUGS</a>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td><input type="button" class="form-control" name="disease_name[]"
+                    value="Disease Name sdgsdgsdgsd gsdgsdgdg" id='diseasename-0'>
+            </td>
+            <td><input type="button" class="form-control" value="<%= new Date().toDateString() %>" name=""></td>
+
+            <td><button data-toggle="modal" data-target="#prescribeFormModal" class="form-control btn btn-info"><i
+                        class="fas fa-eye fa-lg"></i></button>
+            </td>
+            <td class="dropdown">
                 <input type="button" class="form-control dropbtn btn btn-warning" name="" id="" value="...">
                 <div class="dropdown-content">
                     <a href="#" data-toggle="modal" data-target="#getDrugsModal">GET DRUGS</a>
@@ -295,8 +317,10 @@
                                         <small>Note that 50 tk delivery charge is added to bill</small>
                                     </li>
                                     <li class="col-sm-4 mb-2">
-                                        <input class="form-check-input ml-2 mt-3 mb-0" onClick="getSelectedField()" id="r1" type="radio" name="inlineRadioOptions">
-                                        <select style="margin-left: 24px; width:93%;" class="form-control" name="findDrugStore" id="findDrugStore">
+                                        <input class="form-check-input ml-2 mt-3 mb-0" onClick="getSelectedField()"
+                                            id="r1" type="radio" name="inlineRadioOptions">
+                                        <select style="margin-left: 24px; width:93%;" class="form-control"
+                                            name="findDrugStore" id="findDrugStore">
                                             <option value="1" selected="selected" disabled>Find Drug Store:</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -305,12 +329,14 @@
                                         </select>
                                     </li>
                                     <li class="col-sm-4 mb-2 form-check form-switch">
-                                        <input class="form-check-input mt-3 mb-0" onClick="getSelectedField()" type="radio" onClick="getSelectedField()" id="r2" name="inlineRadioOptions">
+                                        <input class="form-check-input mt-3 mb-0" onClick="getSelectedField()"
+                                            type="radio" onClick="getSelectedField()" id="r2" name="inlineRadioOptions">
                                         <input id="newDragStoreEmail" type="email" class="form-control rounded"
                                             name="newDragStoreEmail" value="" placeholder="Email your drug store">
                                     </li>
                                     <li class="form-check form-switch col-sm-4 mt-2">
-                                        <input class="form-check-input" onClick="getSelectedField()" id="r3" type="radio" name="inlineRadioOptions">
+                                        <input class="form-check-input" onClick="getSelectedField()" id="r3"
+                                            type="radio" name="inlineRadioOptions">
                                         <label class="form-check-label" for="r3">Recommended Drug Store</label>
                                     </li>
                                 </ul>
@@ -332,7 +358,7 @@
         if (document.getElementById('r1').checked) {
             document.getElementById("findDrugStore").disabled = false;
             document.getElementById("newDragStoreEmail").disabled = true;
-            if(document.getElementById("newDragStoreEmail").value.length > 0){
+            if (document.getElementById("newDragStoreEmail").value.length > 0) {
                 document.getElementById("newDragStoreEmail").value = "";
             }
         }
@@ -344,7 +370,7 @@
         if (document.getElementById('r3').checked) {
             document.getElementById("newDragStoreEmail").disabled = true;
             document.getElementById("findDrugStore").disabled = true;
-            if(document.getElementById("newDragStoreEmail").value.length > 0){
+            if (document.getElementById("newDragStoreEmail").value.length > 0) {
                 document.getElementById("newDragStoreEmail").value = "";
             }
             document.querySelector('option[value="1"]').selected = true;
@@ -352,4 +378,4 @@
     }
 </script>
 
-<%- include('../partials/footer.ejs') %> 
+<%- include('../partials/footer.ejs') %>
