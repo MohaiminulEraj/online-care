@@ -160,10 +160,9 @@
     <li class="col-sm-12">
       <select class="form-control" name="findDrugStore" id="findDrugStore">
         <option value="1" selected="selected" disabled>Add Language:</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+        <option>Bangla</option>
+        <option>English</option>
+        <option>Other</option>
       </select>
     </li>
   </ul>
@@ -183,18 +182,20 @@
         </button>
       </div>
 
+      <form action="/profile/edit/profilePicture/" method="POST" enctype="multipart/form-data">
       <!--Body-->
       <div class="container modal-body" id="imgUploadModal">
-        <input type="file" name="filePhoto" id="filePhoto" accept="image/*">
+        <input type="file" name="profileImg" id="profileImg" accept="image/*">
         <div class="imagePreviewContainer mt-3">
           <img src="" id="imagePreview" alt="">
         </div>
       </div>
       <!-- footer  -->
       <div class="modal-footer">
-        <button id="imageUploadBtn" type="button" class="btn btn-primary">Save</button>
+        <button id="imageUploadBtn" type="submit" class="btn btn-primary">Save</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -381,54 +382,56 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js"></script>
 
 <script>
-  let cropper;
+  // let cropper;
 
-  $("#filePhoto").change(function () {
-    if (this.files && this.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        let img = document.getElementById("imagePreview");
-        img.src = e.target.result;
+  // $("#profileImg").change(function () {
+  //   if (this.files && this.files[0]) {
+  //     let reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       let img = document.getElementById("imagePreview");
+  //       img.src = e.target.result;
 
-        if (cropper !== undefined) {
-          cropper.destroy()
-        }
-        cropper = new Cropper(img, {
-          aspectRatio: 1 / 1,
-          background: false
-        });
-      }
-      reader.readAsDataURL(this.files[0]);
-    }
-  })
+  //       if (cropper !== undefined) {
+  //         cropper.destroy()
+  //       }
+  //       cropper = new Cropper(img, {
+  //         aspectRatio: 1 / 1,
+  //         background: false
+  //       });
+  //     }
+  //     reader.readAsDataURL(this.files[0]);
+  //   }
+  // })
 
-  $("#imageUploadBtn").click(() => {
-    let canvas = cropper.getCroppedCanvas();
-    if (canvas == null) {
-      alert("Could not upload image. Make sure it is an image file.");
-      return;
-    }
-    canvas.toBlob((blob) => {
-      let formData = new FormData();
-      formData.append("croppedImage", blob);
-      console.log(canvas);
-      console.log(formData);
-      $.ajax({
-        url: "/profile/edit/profilePicture",
-        type: "POST",
-        data: formData,
-        cache: false,
-        processData: false,
-        currentType: false,
-        success: (data) => {
-          console.log(data);
-          location.reload();
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      })
-    });
-  })
+  // $("#imageUploadBtn").click(() => {
+  //   let canvas = cropper.getCroppedCanvas();
+  //   if (canvas == null) {
+  //     alert("Could not upload image. Make sure it is an image file.");
+  //     return;
+  //   }
+  //   canvas.toBlob((blob) => {
+  //     let formData = new FormData();
+  //     // formData.append("croppedImage", blob);
+  //     formData.append("profileImg", blob);
+  //     console.log(canvas);
+  //     console.log(formData);
+  //     $.ajax({
+  //       url: "/profile/edit/profilePicture",
+  //       type: "POST",
+  //       data: formData,
+  //       cache: false,
+  //       processData: false,
+  //       currentType: false,
+  //       success: (data) => {
+  //         console.log(data);
+  //         location.reload();
+  //       },
+  //       error: (err) => {
+  //         console.log(err);
+  //       }
+  //     })
+  //   });
+  // })
+
 </script>
 <%- include('../partials/footer.ejs') %>

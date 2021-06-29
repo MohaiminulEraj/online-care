@@ -14,24 +14,26 @@ const passportLocalMongoose = require('passport-local-mongoose');
 // app.use(passport.session());
 
 const ArticleSchema = new Schema({
-    title : {
+    title: {
         type: String,
         required: true
     },
-    topic : {  // will be replaced with department
+    topic: {  // will be replaced with department
         type: String,
         required: true
     },
-    description : {
+    description: {
         type: String,
         required: true
     },
-    file1: {
-        data: Buffer,
-        contentType: String
-    },
-    causes: { 
-        type: String, 
+    file1: [
+        {
+            url: String,
+            filename: String
+        }
+    ],
+    causes: {
+        type: String,
         required: true
     },
     stages: {

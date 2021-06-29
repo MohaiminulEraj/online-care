@@ -14,23 +14,23 @@ const passportLocalMongoose = require('passport-local-mongoose');
 // app.use(passport.session());
 
 const UserSchema = new Schema({
-    firstname : {
+    firstname: {
         type: String,
         required: true
     },
-    lastname : {
+    lastname: {
         type: String,
         required: true
     },
-    email : {
+    email: {
         type: String,
         required: true,
         lowercase: true,
         trim: true,
         unique: true
     },
-    dateofbirth: { 
-        type: Date, 
+    dateofbirth: {
+        type: Date,
         required: true,
         default: '12/10/1000'
     },
@@ -39,6 +39,7 @@ const UserSchema = new Schema({
         required: true,
         default: 'Gender'
     },
+    profileImg: String,
     fatherId: String,
     mohterId: String,
     spouseId: String,
@@ -66,7 +67,7 @@ const UserSchema = new Schema({
     license_no: {
         type: String,
         required: true,
-        unique:true,
+        unique: true,
         default: '0'
     },
     university: {
@@ -77,7 +78,7 @@ const UserSchema = new Schema({
     dept_doc: {
         type: String,
         required: true,
-        default:'dept'
+        default: 'dept'
     },
     reference_no: {
         type: [String],

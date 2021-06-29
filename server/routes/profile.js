@@ -3,9 +3,9 @@ const router = express.Router();
 const Article = require('../models/articles');
 const User = require('../models/user');
 const multer = require("multer");
-const upload = multer({
-  dest: "server/uploads/"
-})
+const { storage } = require('../cloudinary');
+const upload = multer({ storage })
+// dest: "server/uploads/profileimages/"
 const path = require("path");
 const fs = require("fs");
 
@@ -80,12 +80,12 @@ router.get('/edit', (req, res) => {
   }
   res.redirect('/');
 })
-
-router.post('/edit/profilePicture', upload.single("croppedImage"), async (req, res, next) => {
+// upload.single("croppedImage")
+router.post('/edit/profilePicture/', upload.single("profileImg"), async (req, res, next) => {
 
   if (req.isAuthenticated()) {
     console.log("file", req.file);
-    console.log("files", req.files)
+    // return res.send(req.body, req.file);
     // console.log(req.body);
     if (!req.file) {
       console.log("No file uploaded with ajax request.");
@@ -101,9 +101,11 @@ router.post('/edit/profilePicture', upload.single("croppedImage"), async (req, r
     fs.rename(tempPath, targetPath, error => {
       if (error != null) {
         console.log(error);
-        return res.sendStatus(400);
+        // return res.sendStatus(200);
+        return res.send("IT WORKED!");
+        // return res.send('usersProfile/editProfile.ejs');
       }
-      res.sendStatus(200);
+      res.sendStatus(400);
     })
   }
 })

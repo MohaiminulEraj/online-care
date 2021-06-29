@@ -1,4 +1,8 @@
 // require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const http = require('http')
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -24,7 +28,7 @@ app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }))
 app.use(methodOverride('_method'));
 app.use(session({
-  secret: "thisshouldbeabettersecret.",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -171,14 +175,14 @@ app.get('*', function (req, res) {
   res.status(404).send('<h1 style="color:red;"> Page Not Found <h1>');
 });
 
-// server.listen(process.env.PORT || 3000,
-//   process.env.IP || 'localhost', function () {
-//     console.log('Server running');
-//   })
-
 server.listen(process.env.PORT || 3000,
-  '192.168.0.111', function () {
+  process.env.IP || 'localhost', function () {
     console.log('Server running');
   })
+
+// server.listen(process.env.PORT || 3000,
+//   '192.168.0.111', function () {
+//     console.log('Server running @ 192.168.0.111:3000');
+//   })
 
 // server.listen(3000, '192.168.0.111'); // IP Forwardning.
