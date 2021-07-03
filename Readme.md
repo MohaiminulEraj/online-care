@@ -1,11 +1,11 @@
 <h2 align=center>
-ONLINE MEDICATION BASED PROJECT
+ONLINE CARE BASED PROJECT
 </h2>
 
 ---
 
 ## **PROJECT INTRODUCTION**
-#### **Online Medication Based Project is a website where patients and doctors can communicate through this website post articles regarding any disease or symptoms. Doctors needs verify the articles to make it publicly available.**
+#### **A platform that provides verified articles to stop fake news from spreading and a platform where patients can set appointments and talk to specialists to diagnose their health problems.**
 
 
 ## **HOW TO SETUP**
@@ -13,13 +13,9 @@ ONLINE MEDICATION BASED PROJECT
 
 #### 2. Download this code, and from command prompt run:
 
-        npm init
-
-        npm install --save body-parser express ejs http mongodb mongoose
-
-        npm install passport passport-local passport-local-mongoose express-session method-override connect-flash
-
         npm install -g nodemon
+        
+        npm install
 
 #### 3. To run the code, run:
 
@@ -27,8 +23,11 @@ ONLINE MEDICATION BASED PROJECT
 
 #### 4. In the browser open http://localhost:3000/, and you should see the index page
 
+## **PROJECT DOCUMENTATION**
 
-## **PROJECT DOCUMENTAION**
+* Comming Soon...
+
+## **PROJECT DEMO**
 
 * This is the Home Page of my site where user can search by disease or symptomps to view verified articles.
 
