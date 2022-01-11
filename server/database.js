@@ -3,11 +3,12 @@ class Database {
     constructor() {
         this.connect();
     }
-    
+
     connect() {
         // const { request } = require('express');
         mongoose.Promise = global.Promise
-        const dbURL = 'mongodb://localhost:27017/online_medication' //change this if you are using Atlas
+        const dbURL = process.env.dbURL //change this if you are using Atlas
+        // const dbURL = 'mongodb://localhost:27017/online_medication' //change this if you are using Atlas
         mongoose.connect(dbURL, {
             useNewUrlParser: true,
             useCreateIndex: true,

@@ -6,5 +6,23 @@
 
 <%- include('../partials/profileNavbar.ejs') %>
 
+<% if(loggedInUser && articles){ %>
+    <div class="container-flued">
+        <ul class="row list-unstyled">
+            <% for (const [key, value] of Object.entries(articles)) { %>
+            
+            <li class="col-lg-3 col-md-4 col-sm-6 mb-5"> 
+                <div>Article <%= parseInt(key)+1 %>:</div>
+                <div>Title: <%= value.title %></div>
+            <div> Department: <%= value.topic %> </div>
+            <div> Description: <% if(value.description.length <= 100){%>
+                <%= value.description %> <% } else { %> <%=  value.description.substring(0, 150) %>...<a href="">see more</a>
+                <% } %> </div>
+            <div> Symptoms: <%= value.symptoms  %> </div>
+            <%  } %>
+            </li>
+        </ul>
+        </div>
+<% } %> 
 
 <%- include('../partials/footer.ejs') %>

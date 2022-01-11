@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
+
 // const session = require('express-session');
 // const passport = require('passport');
 const passportLocalMongoose = require('passport-local-mongoose');
@@ -95,6 +98,35 @@ const UserSchema = new Schema({
 }, { timestamps: true });
 
 UserSchema.plugin(passportLocalMongoose);
+
+// Encrypting password before saving user
+UserSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) {
+        next()
+    }
+    this.password = await bcrypt.hash(this.password, 10)
+})
+
+// Compare user password
+UserSchema.methods.comparePassword = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password)
+}
+
+// Generate password reset token
+UserSchema.methods.getResetPasswordToken = function () {
+
+    // Generate token
+    const resetToken = crypto.randomBytes(20).toString('hex')
+
+    // Hash and set to resetPasswordToken field
+    this.resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+
+    // Set token expire time
+    this.resetPasswordExpire = Date.now() + 30 * 60 * 1000
+
+    return resetToken;
+
+}
 
 const User = mongoose.model('User', UserSchema);
 

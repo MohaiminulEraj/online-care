@@ -22,7 +22,7 @@
           </li>
           <% } %>
           <li class="nav-item">
-            <a class="nav-link active" href="#">SUPPORT</a>
+            <a class="nav-link active" data-toggle="modal" data-target="#supportModal" href="#">SUPPORT</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="#">REVIEW</a>
@@ -47,7 +47,7 @@
             data-bs-toggle="dropdown" aria-expanded="false">WELCOME <%= loggedInUser.firstname.toUpperCase() %>
             <%= loggedInUser.lastname.toUpperCase()  %> </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="/profile">My Profile</a></li>
+            <li><a class="dropdown-item" href="/profile/">My Profile</a></li>
             <li><a class="dropdown-item" href="/profile/edit">Edit Profile</a></li>
             <% if(loggedInUser && loggedInUser.license_no !== '0' && loggedInUser.university !== 'University' && loggedInUser.reference_no[0] !== '(Seperated By Comma)') {%>
             <li><a class="dropdown-item" data-toggle="modal" data-target="#scheduleModal">Schedule</a></li>
@@ -60,7 +60,7 @@
         </li>
       </ul>
       <% } else { %>
-      <ul class="navbar-nav ml-auto mb-lg-0"></ul>
+      <ul class="navbar-nav ml-auto mb-lg-0">
       <li class="nav-item">
         <a class="nav-link active" data-toggle="modal" data-target="#registerModal" href="#">REGISTER</a>
       </li>
@@ -90,7 +90,7 @@
         <div class="container modal-body" id="loginclick">
           <form action="/login" method="POST">
             <div class="form-group">
-              <input type="text" name="username" class="form-control username" placeholder="Username" value="eraj"
+              <input type="text" name="username" class="form-control username" placeholder="Username" value="m.eraj"
                 required>
             </div>
             <div class="form-group">
@@ -146,7 +146,7 @@
               <!-- <input type="password" name="password" class="form-control" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 to 16 characters" required> -->
             </div>
             <div class="form-group">
-              <button style="float: right;" type="submit" id="registerBtn"
+              <button style="float: right;" type="button" onclick="regBtn()" id="registerBtn"
                 class="btn btn-outline-success">Register</button>
             </div>
           </form>
@@ -297,6 +297,41 @@
     </div>
   </div>
 
+  <!-- Support Modal -->
+  <div class="modal fade" role="dialog" id="supportModal">
+    <div class="modal-dialog">
+      <div style="background: black;" class="modal-content">
+        <div class="modal-header">
+          <h3>Message Us:</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            &times;
+          </button>
+        </div>
+
+        <!--Body-->
+        <div class="container modal-body" id="loginclick">
+          <form action="/login" method="POST">
+            <div class="form-group">
+              <input type="email" name="emailForContact" class="form-control username" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Your Message" name="" id="" cols="49" rows="5"></textarea>
+            </div>
+            <!-- <div class="form-check mb-2 mr-sm-2">
+                    <label style="cursor: pointer;" class="form-check-label">
+                      <input class="form-check-input" onclick="showPassBtn()" type="checkbox"> Show password
+                    </label>
+                  </div> -->
+            <div class="form-group">
+              <button style="float: right;" type="submit" id="loginBtn" class="btn btn-success">Submit</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     function check() {
       alert('User needs to have a varified account to create an article')
@@ -379,5 +414,9 @@
         document.getElementById('r4').disabled = false;
       }
     })
+
+    function regBtn() {
+      alert('Registration restricted for security purposes');
+    }
     
   </script>

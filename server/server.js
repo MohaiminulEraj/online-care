@@ -177,7 +177,7 @@ app.get('*', function (req, res) {
 
 server.listen(process.env.PORT || 3001,
   process.env.IP || 'localhost', function () {
-    console.log('Server running');
+    console.log('Server running on localhost port 3001');
   })
 
 // server.listen(process.env.PORT || 3000,

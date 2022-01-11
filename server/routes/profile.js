@@ -9,9 +9,13 @@ const upload = multer({ storage })
 const path = require("path");
 const fs = require("fs");
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   if (req.isAuthenticated()) {
-    return res.render('usersProfile/viewProfile.ejs');
+    const user = await User.findById(req.user._id).populate('articles').populate('author');
+    const articles = await Article.find();
+    return res.render('usersProfile/viewProfile.ejs', {
+      articles
+    });
   }
   res.redirect('/');
 })
