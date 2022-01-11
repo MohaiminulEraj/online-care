@@ -11,7 +11,7 @@ class Database {
         // const dbURL = 'mongodb://localhost:27017/online_medication' //change this if you are using Atlas
         mongoose.connect(dbURL, {
             useNewUrlParser: true,
-            useCreateIndex: true,
+            // useCreateIndex: true,
             useUnifiedTopology: true,
             useFindAndModify: false
         })
