@@ -175,9 +175,11 @@ app.get('*', function (req, res) {
   res.status(404).send('<h1 style="color:red;"> Page Not Found <h1>');
 });
 
-server.listen(process.env.PORT || 3001,
-  process.env.IP || 'localhost', function () {
-    console.log('Server running on localhost port 3001');
+const port = process.env.PORT || 3001;
+const ip = process.env.IP || 'localhost';
+server.listen(port,
+  ip, function () {
+    console.log(`Server running on ${ip} port ${port}`);
   })
 
 // server.listen(process.env.PORT || 3000,
